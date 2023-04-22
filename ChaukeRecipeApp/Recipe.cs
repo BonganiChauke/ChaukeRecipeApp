@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChaukeRecipeApp
 {
-    internal class Program
+    internal class Recipe
     {
-        static void Main(string[] args)
-        {
-
-
-        }
     }
 }

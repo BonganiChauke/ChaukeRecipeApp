@@ -10,7 +10,7 @@ namespace ChaukeRecipeApp
     {
         static void Main(string[] args)
         {
-
+            RecipeMethod.captureRecipe();
 
         }
     }

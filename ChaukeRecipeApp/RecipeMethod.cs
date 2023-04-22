@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Spectre.Console;
 
 namespace ChaukeRecipeApp
 {
@@ -22,9 +23,6 @@ namespace ChaukeRecipeApp
         static string[] ingredientUnitMeasurementArray;
         static int[] ingredientQuantityArray;
         static string[] ingredientStepsDescriptionArray;
-
-        //Declaring the Recipe class as array
-        //Recipe[] getIngredients;
 
         //variable to get number of ingredient from user
         static int numberOfIngredient;
@@ -115,6 +113,17 @@ namespace ChaukeRecipeApp
             Console.WriteLine("\n");
 
             return ingredientName;//A return statement to return a value when the execution of the block is completed
+        }
+        public void displayRecipe()
+        {
+            String recipe = "The Recipe";
+            Console.ForegroundColor = red;
+            Console.WriteLine("*********************** " + recipe.ToUpper() + " **************************************\n");
+            Console.ResetColor();
+
+
+
+
         }
 
 

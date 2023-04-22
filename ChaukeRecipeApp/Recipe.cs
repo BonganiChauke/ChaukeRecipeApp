@@ -8,5 +8,44 @@ namespace ChaukeRecipeApp
 {
     internal class Recipe
     {
+        //Declaring Properties Variables as private for recipe
+
+        private String ingredientNameProperty; //field
+        private String ingredientUnitMeasurementProperty;//field
+        private int ingredientQuantityProperty;//field
+        private String ingredientStepDescription;//field
+
+        //Overloaded Constructor for setting values to the  attributes
+
+        //Automatic Property for ingredientName
+
+        public string IngredientNameProperty
+        {
+            get;set;
+        }
+
+        //Automatic Property for ingredientUnitMeasuremnt
+
+        public string IngredientUnitMeasurementProperty
+        {
+            get;set;
+        }
+
+        //Automatic Property for ingredientQuantity 
+
+        public int IngredientQuantityProperty
+        {
+            get;set;
+        }
+
+        //Automatic Property for ingredientStepDescription
+
+        public string IngredientStepDescription
+        {
+            get;set;
+        }
+
+
+
     }
 }

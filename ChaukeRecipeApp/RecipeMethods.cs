@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Spectre.Console;
@@ -8,7 +9,7 @@ using Spectre.Console.Rendering;
 
 namespace ChaukeRecipeApp
 {
-    internal class RecipeMethod
+    internal class RecipeMethods
     {
         //Declaring Object reference for Recipe Class to get the attributes
         static Recipe recipeClassObject = new Recipe();
@@ -227,7 +228,7 @@ namespace ChaukeRecipeApp
 
                 ingredientQuantityUpdate.BorderColor(color: Color.BlueViolet);//Adding color to table Border
 
-                ingredientQuantityUpdate.Width(50);//setting a width for the table
+                ingredientQuantityUpdate.Width(80);//setting a width for the table
 
                 ingredientQuantityUpdate.Border(TableBorder.Horizontal);//Setting the border style
 
@@ -441,7 +442,37 @@ namespace ChaukeRecipeApp
             }
 
 
-        }//
+        }
+        public static void clearRecipeData()
+        {
+            for (int g = 0; g < ingredientNameArray.Length; g++)
+            {
+                if (ingredientNameArray[g] == null)
+                {   
+                    //lowering the possibilities of an error
+
+
+                    //return ingredientNameArray;
+                }
+
+            }
+
+            
+
+        }
+        public static int resetQuantities()
+        {
+            int reset;//variable will be used to reset the quantities
+            int returnStatement = 1;
+
+            for (int a = 0; a < ingredientQuantityArray.Length; a++)
+            {
+                ingredientQuantityArray[a] = ingredientQuantityArray[a] - ingredientQuantityArray[a];
+
+            }
+
+            return returnStatement;
+        } 
     }
 }
 

@@ -452,8 +452,12 @@ namespace ChaukeRecipeApp
                 ingredientNameArray[g] = null;
                  
 
-                    Console.Write("Gone " + ingredientQuantityArray[g]);
+                Console.Write("Gone " + ingredientQuantityArray[g]);
                 Console.Write("Gone " + ingredientNameArray[g]);
+                
+                
+                
+                
                 //return ingredientNameArray;
                 Program.in_methodMenu();
 
@@ -472,7 +476,11 @@ namespace ChaukeRecipeApp
                 ingredientQuantityArray[a] = ingredientQuantityArray[a] - ingredientQuantityArray[a];
 
                 Console.Write("Gone " + ingredientQuantityArray[a]);
+
+               
             }
+
+            Program.in_methodMenu();
 
             return returnStatement;
         } 

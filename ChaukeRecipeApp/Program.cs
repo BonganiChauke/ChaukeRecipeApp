@@ -43,20 +43,21 @@ namespace ChaukeRecipeApp
 
             int menuOption = Convert.ToInt16(Console.ReadLine());//Reads the user input into variable menuOption 
 
-            if(menuOption == 1)
+            if (menuOption == 1)
             {
                 //Calling the method to capture the recipe
 
                 RecipeMethods.captureRecipe();
             }
-            else if(menuOption == 2)
+            else if (menuOption == 2)
             {
                 //Calling the method to diplay the recipe
 
                 RecipeMethods.displayRecipe();
 
 
-            }else if (menuOption == 3)
+            }
+            else if (menuOption == 3)
             {
                 //Calling the method to clear data
 

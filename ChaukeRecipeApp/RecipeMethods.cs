@@ -136,7 +136,7 @@ namespace ChaukeRecipeApp
             Console.ResetColor();
             Console.WriteLine("\n");
 
-            displayRecipe();
+            Program.in_methodMenu();
 
             return ingredientName;//A return statement to return a value when the execution of the block is completed
 
@@ -447,13 +447,15 @@ namespace ChaukeRecipeApp
         {
             for (int g = 0; g < ingredientNameArray.Length; g++)
             {
-                if (ingredientNameArray[g] == null)
-                {   
-                    //lowering the possibilities of an error
 
+                ingredientQuantityArray[g] = 0;
+                ingredientNameArray[g] = null;
+                 
 
-                    //return ingredientNameArray;
-                }
+                    Console.Write("Gone " + ingredientQuantityArray[g]);
+                Console.Write("Gone " + ingredientNameArray[g]);
+                //return ingredientNameArray;
+                Program.in_methodMenu();
 
             }
 
@@ -469,6 +471,7 @@ namespace ChaukeRecipeApp
             {
                 ingredientQuantityArray[a] = ingredientQuantityArray[a] - ingredientQuantityArray[a];
 
+                Console.Write("Gone " + ingredientQuantityArray[a]);
             }
 
             return returnStatement;

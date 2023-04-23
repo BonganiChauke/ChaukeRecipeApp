@@ -78,9 +78,34 @@ namespace ChaukeRecipeApp
 
 
         }
-        
 
-        
+        //In method menu will be used inside the methods in the RecipeMethod
+
+        public static void in_methodMenu()
+        {
+            Console.WriteLine("Enter (1) to lauch menu else to exist ");
+            int menu = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("\n");
+
+            if (menu == 1)
+            {
+                //main program menu 
+                Program.mainMenu();
+
+
+            }
+            else if (menu != 1)
+            {
+                //Exit program
+                System.Environment.Exit(0);
+
+            }
+
+        }
+
+
+
 
     }
 }

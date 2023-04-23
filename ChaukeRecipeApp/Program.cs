@@ -8,6 +8,8 @@ namespace ChaukeRecipeApp
 {
     internal class Program
     {
+        
+
         static void Main(string[] args)
         {
             RecipeMethod.captureRecipe();

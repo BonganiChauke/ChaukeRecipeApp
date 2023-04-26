@@ -63,23 +63,5 @@ namespace ChaukeRecipeApp
             get;set;
         }
 
-        //Automatic Property for 
-
-        //ingredientQuantityArray[a] = ingredientQuantityArray[a] - ingredientQuantityArray[a];
-
-        //Console.Write("Gone " + ingredientQuantityArray[a]);
-
-
-        //ingredientQuantityArray[g] = 0;
-        //        ingredientNameArray[g] = null;
-
-
-        //        Console.Write("Gone " + ingredientQuantityArray[g]);
-        //        Console.Write("Gone " + ingredientNameArray[g]);
-
-
-
-
-        //return ingredientNameArray;
     }
 }

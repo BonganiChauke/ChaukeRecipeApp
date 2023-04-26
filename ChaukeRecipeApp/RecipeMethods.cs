@@ -309,7 +309,7 @@ namespace ChaukeRecipeApp
                     {
                         recipeClassObject.UpdateQuantityInt = ingredientQuantityArray[o] * 2;//ingredientQuantityArray will be scale by 2 using double data type
 
-                        if (ingredientUnitMeasurementArray[o].Contains("tablespoon"))//if teaspoon found from user input the program will do the following calculation and update units measurements
+                        if (ingredientUnitMeasurementArray[o].Contains("tablespoon") || ingredientUnitMeasurementArray[o].Contains("tablespoons"))//if teaspoon found from user input the program will do the following calculation and update units measurements
                         {
                             if (recipeClassObject.UpdateQuantityInt <= 8)
                             {
@@ -368,7 +368,7 @@ namespace ChaukeRecipeApp
 
 
                         }
-                        else if (ingredientUnitMeasurementArray[o].Contains("teaspoon"))//if teaspoon found from user input the program will do the following calculation and update units measurements 
+                        else if (ingredientUnitMeasurementArray[o].Contains("teaspoon") || ingredientUnitMeasurementArray[o].Contains("teaspoons"))//if teaspoon found from user input the program will do the following calculation and update units measurements 
                         {
                             if (recipeClassObject.UpdateQuantityInt <= 3)
                             {

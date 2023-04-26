@@ -10,13 +10,12 @@ namespace ChaukeRecipeApp
 {
     internal class Program
     {
-        //
-        static RecipeMethods methods = new RecipeMethods();
+        
 
-        //
+        //color to style the program
         static ConsoleColor red = ConsoleColor.Red;
 
-        //
+        //main to execute the program
         static void Main(string[] args)
         {
                       
@@ -30,7 +29,7 @@ namespace ChaukeRecipeApp
                 Console.WriteLine("***************Sanele RECIPE JOURNAL**************\n");
                 Console.ResetColor();               
 
-                Program.mainMenu();//
+                Program.mainMenu();//Calling the main method to prompt the user
 
             }
             
@@ -41,11 +40,11 @@ namespace ChaukeRecipeApp
 
         public static void mainMenu()
         {
-            //
+            //Declaring the an instance of a table class in spectre class for ingredient
             var tableMenu = new Table();
 
-            //
-            tableMenu.AddColumn("Menu : Choose an option ");
+            //Adding content to the rows
+            tableMenu.AddColumn("Menu Choose an option:");
             tableMenu.AddRow("1. Create Recipe ");
             tableMenu.AddRow("2. Diplay Recipe ");
             tableMenu.AddRow("3. Scale Quantities ");
@@ -59,7 +58,7 @@ namespace ChaukeRecipeApp
 
             tableMenu.Border(TableBorder.Horizontal);//Setting the border style 
 
-            AnsiConsole.Write(tableMenu);//
+            AnsiConsole.Write(tableMenu);//diplay the table to the console
 
 
             int menuOption = Convert.ToInt16(Console.ReadLine());//Reads the user input into variable menuOption 
@@ -82,7 +81,7 @@ namespace ChaukeRecipeApp
             {
                 //Calling the method to scale Quantities
 
-                RecipeMethods.clearRecipeData();
+                RecipeMethods.scaleQuantities();
 
                 
             }
@@ -119,12 +118,12 @@ namespace ChaukeRecipeApp
         public static void in_methodMenu()
         {
 
-            //
+            //Declaring the an instance of a table class in spectre class for ingredient
             var tableMenu = new Table();
 
-            //
-            tableMenu.AddColumn("Menu : Choose an option: ");
-            tableMenu.AddRow("Enter (1) to lauch menu else to exist ");
+            //Adding content to the table
+            tableMenu.AddColumn("Menu Choose an option: ");
+            tableMenu.AddRow("Enter (1) to lauch menu \n ---> Any number to exist ");
             
 
             tableMenu.BorderColor(color: Color.Aquamarine3);//Adding color to table Border
@@ -133,21 +132,22 @@ namespace ChaukeRecipeApp
 
             tableMenu.Border(TableBorder.Horizontal);//Setting the border style 
 
-            AnsiConsole.Write(tableMenu);//
+            AnsiConsole.Write(tableMenu);//Diplaying the table to the console
 
-            //Console.WriteLine("Enter (1) to lauch menu else to exist ");
-            int menu = Convert.ToInt32(Console.ReadLine());
+            
+            int menu = Convert.ToInt32(Console.ReadLine());//reads user input to value
+            
 
             Console.WriteLine("\n");
 
-            if (menu == 1)
+            if (menu == 1 )
             {
                 //Calling the main program menu 
                 Program.mainMenu();
 
 
             }
-            else if (menu != 1)
+            else if (menu != 1 )
             {
                 //Exit program
                 System.Environment.Exit(0);

@@ -154,13 +154,10 @@ namespace ChaukeRecipeApp
             ingredientTable.AddColumn(new TableColumn(header: "Recipe "));//A header Recipe
 
 
-
-
-
-
             //for loop search through the array to display all the saved values in an array
             for (int m = 0; m < ingredientNameArray.Length; m++)
             {
+                //If the values saved on the arrays are not null the diplay will show the recipe
                 if (ingredientNameArray[m] != null && ingredientStepsDescriptionArray != null && ingredientQuantityArray[m] != 0 && ingredientUnitMeasurementArray[m] != null)
                 {
                     ingredientTable.AddRow("Ingredient Name ", ingredientNameArray[m].ToUpper());//Adding row for ingredientNameArray
@@ -173,13 +170,11 @@ namespace ChaukeRecipeApp
 
                     ingredientTable.Border(TableBorder.Horizontal);//Setting the border style
 
-                    //break;
-                    //AnsiConsole.Write(ingredientTable);//Diplay table to console
 
-                }
+                }//if the value are null the clear method is called to show the user that there is no saved inputs
                 else 
                 {
-                    //
+                    //calling the clear method
                     clearRecipeData();
 
                 }
@@ -215,7 +210,7 @@ namespace ChaukeRecipeApp
             Console.WriteLine("**************************************************\n");
             Console.ResetColor();
 
-            Program.in_methodMenu();//Calls menu               
+            Program.in_methodMenu();//Calls in_menu method               
 
         }
         public static void scaleQuantities()
@@ -241,9 +236,9 @@ namespace ChaukeRecipeApp
             {
                 //Prompts the user to select a scale
                 Console.WriteLine("Choose a scale \n" +
-                    "1. 0.5 \n" +
-                    "2. 2 \n" +
-                    "3. 3 \n");
+                    "1. First Scale by: 0.5 \n" +
+                    "2. Second Scale by: 2 \n" +
+                    "3. Third Scale by: 3 \n");
 
                 int scaleOption = Convert.ToInt16(Console.ReadLine());//Reads the user input to scaleOption variable
 
@@ -254,13 +249,13 @@ namespace ChaukeRecipeApp
 
                 ingredientQuantityUpdate.BorderColor(color: Color.BlueViolet);//Adding color to table Border
 
-                ingredientQuantityUpdate.Width(80);//setting a width for the table
+                ingredientQuantityUpdate.Width(50);//setting a width for the table
 
                 ingredientQuantityUpdate.Border(TableBorder.Horizontal);//Setting the border style
 
                 String recipe = "Scale";
                 Console.ForegroundColor = red;
-                Console.WriteLine("*********************** " + recipe.ToUpper() + " *********************************\n");
+                Console.WriteLine("*********************** " + recipe.ToUpper() + " *********************\n");
                 Console.ResetColor();
 
 
@@ -271,17 +266,25 @@ namespace ChaukeRecipeApp
                     {
                         recipeClassObject.UpdateQuantityDouble = ingredientQuantityArray[b] * 0.5;//ingredientQuantityArray will be scale by 0.5 using double data type 
 
-                        ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[b].ToUpper());//Adding row for ingredientNameArray
+                        if (ingredientUnitMeasurementArray[b].Contains("cup"))
+                        {
+                            if (recipeClassObject.UpdateQuantityDouble < 2)
+                            {
+                                ingredientUnitMeasurementArray[b] = " Cup";
 
-                        ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityDouble + " " + ingredientUnitMeasurementArray[b].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[b].ToUpper());//Adding row for ingredientNameArray
 
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityDouble + " " + ingredientUnitMeasurementArray[b].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
+                            }
+
+                        }break;
 
 
                     }
 
                     AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
-                    Program.in_methodMenu();
+                    Program.in_methodMenu();//call to diplay menu
 
                 }
                 else if (scaleOption == 2)
@@ -343,6 +346,9 @@ namespace ChaukeRecipeApp
 
 
                             }
+
+                            AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+                            Program.in_methodMenu();//call to diplay menu
 
 
                         }
@@ -453,9 +459,18 @@ namespace ChaukeRecipeApp
                     {
                         recipeClassObject.UpdateQuantityInt = ingredientQuantityArray[n] * 3;//ingredientQuantityArray will be scale to 3 using int data type 
 
-                        ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[n].ToUpper());//Adding row for ingredientNameArray
+                        if(recipeClassObject.UpdateQuantityInt > 1)//
+                        {
+                            ingredientUnitMeasurementArray[n] = " Cups";//
 
-                        ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityInt + " " + ingredientUnitMeasurementArray[n].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                            ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[n].ToUpper());//Adding row for ingredientNameArray
+
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityInt + " " + ingredientUnitMeasurementArray[n].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+
+
+
+                        }
+
 
                     }
 
@@ -476,135 +491,78 @@ namespace ChaukeRecipeApp
 
 
         }
-        //
+        //A method to clear the data
         public static void clearRecipeData()
         {
             //Prompt user to clear 
-            var clearTable = new Table();
+            var clearTable = new Table();//Declaring the an instance of a table class in spectre class for ingredient
 
-            Console.WriteLine("\n");
+            Console.WriteLine("Confirm : Are you sure ??!! \n" +
+               "1.Yes\n" +
+               "2.No\n");//prompts the user
 
-            for (int i = 0; i < ingredientNameArray.Length; i++)
+            int confirm = Convert.ToInt16(Console.ReadLine());//user input save in the variable
+
+            if (confirm == 1)
             {
-                clearTable.AddColumn(new TableColumn(header: "Ingredients "));//A header for ingredients 
-                //clearTable.AddColumn(new TableColumn(header: "Recipe "));//A header Recipe
-                
-                clearTable.BorderColor(color: Color.BlueViolet);//Adding color to table Border
-
-                clearTable.Width(30);//setting a width for the table
-
-                clearTable.Border(TableBorder.Horizontal);//Setting the border style
-
-                Array.Clear(ingredientNameArray, 0, ingredientNameArray.Length);//
-                Array.Clear(ingredientQuantityArray, 0, ingredientQuantityArray.Length);//
-                Array.Clear(ingredientUnitMeasurementArray, 0, ingredientUnitMeasurementArray.Length);//
-                Array.Clear(ingredientStepsDescriptionArray, 0, ingredientStepsDescriptionArray.Length);//
-
-
-                clearTable.AddRow("Ingredient Name : " + ingredientNameArray[i]);//
-                clearTable.AddRow("Quantity : " + ingredientQuantityArray[i] + " " );//
-                clearTable.AddRow("Unit Measurement: " + ingredientUnitMeasurementArray[i]);
-                
-                AnsiConsole.Write(clearTable);
-
                 Console.WriteLine("\n");
+
+                clearTable.AddColumn(new TableColumn(header: "Ingredients "));//A header for ingredients 
+
+                for (int i = 0; i < ingredientNameArray.Length; i++)
+                {
+                    
+                    clearTable.BorderColor(color: Color.BlueViolet);//Adding color to table Border
+
+                    clearTable.Width(30);//setting a width for the table
+
+                    clearTable.Border(TableBorder.Horizontal);//Setting the border style
+
+                    Array.Clear(ingredientNameArray, 0, ingredientNameArray.Length);//Array Clear Method -- Clears all the content from 0 to the length of array
+                    Array.Clear(ingredientQuantityArray, 0, ingredientQuantityArray.Length);//Array Clear Method -- Clears all the content from 0 to the length of array
+                    Array.Clear(ingredientUnitMeasurementArray, 0, ingredientUnitMeasurementArray.Length);//Array Clear Method -- Clears all the content from 0 to the length of array
+                    Array.Clear(ingredientStepsDescriptionArray, 0, ingredientStepsDescriptionArray.Length);//Array Clear Method -- Clears all the content from 0 to the length of array
+
+
+                    clearTable.AddRow("Ingredient Name : " + ingredientNameArray[i]);//Diplays the cleared input
+                    clearTable.AddRow("Quantity : " + ingredientQuantityArray[i]);//Diplays the cleared input
+                    clearTable.AddRow("Unit Measurement: " + ingredientUnitMeasurementArray[i]);//Diplays the cleared input
+
+
+
+                }
+                AnsiConsole.Write(clearTable);//
+
+                Console.WriteLine("\n");//          
+
+                //Prompts the user
+                Console.WriteLine("Recipe Cleared : Enter a new recipe" +
+                    "1. Yes \n" +
+                    "2. No\n");
+                int enterNewRecipe = int.Parse(Console.ReadLine());//
+
+                switch(enterNewRecipe)
+                {
+                    case 1:
+                        captureRecipe();//Call the method can enter a new recipe
+                        break;
+
+                    case 2:
+                        Program.in_methodMenu();//Call the menu method
+                        break;
+
+                }
+
+
+            }
+            else if (confirm == 2)
+            {
+                Program.in_methodMenu();//calls the displya menu
 
             }
 
-            //Console.WriteLine("Confirm : Are you sure ??!! \n" +
-            //   "1.Yes\n" +
-            //   "2.No\n");
-
-            //int confirm = Convert.ToInt16(Console.ReadLine());
-
-            //if (confirm == 1)
-            //{
-            //    //displayRecipe();
-
-
-            //    for (int i = 0; i < ingredientNameArray.Length; i++)
-            //    {
-            //        table.AddColumn(new TableColumn(header: "Ingredients "));
-            //        Array.Clear(ingredientNameArray, 0, ingredientNameArray.Length);
-            //        Array.Clear(ingredientQuantityArray, 0, ingredientQuantityArray.Length);
-            //        Array.Clear(ingredientUnitMeasurementArray, 0, ingredientUnitMeasurementArray.Length);
-            //        Array.Clear(ingredientStepsDescriptionArray, 0, ingredientStepsDescriptionArray.Length);
-
-
-            //        table.AddRow("Name  " + ingredientNameArray[i]);
-            //        table.AddRow("Quan  " + ingredientQuantityArray[i]);
-            //        AnsiConsole.Write(table);
-
-            //    }
-
-            //}
-            //else if (confirm == 2)
-            //{
-            //    Program.in_methodMenu();//
-
-            //}
 
         }
-
-        //Array.Clear(ingredientNameArray, 0, ingredientNameArray.Length);
-        //Array.Clear(ingredientQuantityArray, 0, ingredientQuantityArray.Length);
-        //Array.Clear(ingredientUnitMeasurementArray, 0, ingredientUnitMeasurementArray.Length);
-        //Array.Clear(ingredientStepsDescriptionArray, 0, ingredientStepsDescriptionArray.Length);    
-
-        //for (int i = 0; i < ingredientNameArray.Length; i++)
-        //{
-        //    t.AddColumn(new TableColumn(header: "Ingredients "));
-        //    Array.Clear(ingredientNameArray, 0, ingredientNameArray.Length);
-        //    Array.Clear(ingredientQuantityArray, 0, ingredientQuantityArray.Length);
-        //    Array.Clear(ingredientUnitMeasurementArray, 0, ingredientUnitMeasurementArray.Length);
-        //    Array.Clear(ingredientStepsDescriptionArray, 0, ingredientStepsDescriptionArray.Length);
-
-
-        //    t.AddRow("Name  " + ingredientNameArray[i]);
-        //    t.AddRow("Quan  " + ingredientQuantityArray[i]);
-        //    AnsiConsole.Write(t);
-
-        //}
-
-
-
-
-
-
-        //
-
-
-
-        //else if (confirm == 2)
-        //{
-        //    Program.in_methodMenu();
-        //}
-
-        //
-        //Console.WriteLine("Enter a new recipe \n" +
-        //    "1. Yes\n" +
-        //    "2. No\n ");
-        //int newRecipe = int.Parse(Console.ReadLine());
-
-        //switch (newRecipe)
-        //{
-        //    case 1:
-        //        //call the create recipe method
-
-        //        captureRecipe();
-        //        break;
-
-        //    case 2:
-        //        //call the in-method method
-
-        //        Program.in_methodMenu();
-
-        //        break;
-
-        //}
-
-
-
 
         //
         public static void resetQuantities()

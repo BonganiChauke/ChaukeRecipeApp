@@ -266,17 +266,33 @@ namespace ChaukeRecipeApp
                     {
                         recipeClassObject.UpdateQuantityDouble = ingredientQuantityArray[b] * 0.5;//ingredientQuantityArray will be scale by 0.5 using double data type 
 
-                        if (ingredientUnitMeasurementArray[b].Contains("cup"))
+
+                        if (ingredientUnitMeasurementArray[b].Contains("cup") || ingredientUnitMeasurementArray[b].Contains("CUP"))
                         {
                             if (recipeClassObject.UpdateQuantityDouble < 2)
                             {
-                                ingredientUnitMeasurementArray[b] = " Cup";
+                                ingredientUnitMeasurementArray[b] = " Cup";//changes the units Measurement
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[b].ToUpper());//Adding row for ingredientNameArray
 
                                 ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityDouble + " " + ingredientUnitMeasurementArray[b].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
                             }
+
+                        }break;
+
+                        if(ingredientUnitMeasurementArray[b].Contains("tablespoons") || ingredientUnitMeasurementArray[b].Contains("tablespoon"))
+                        {
+                            if (recipeClassObject.UpdateQuantityDouble >= 8)
+                            {
+                                ingredientUnitMeasurementArray[b] = "24 teaspoons";//changes the units Measurement
+
+                                ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[b].ToUpper());//Adding row for ingredientNameArray
+
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityDouble + " " + ingredientUnitMeasurementArray[b].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+
+                            }
+
 
                         }break;
 

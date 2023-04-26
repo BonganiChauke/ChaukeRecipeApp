@@ -102,7 +102,7 @@ namespace ChaukeRecipeApp
             {
                 //The Program will exist
 
-                Environment.Exit(0);
+                System.Environment.Exit(0);
             }
 
             Console.ForegroundColor = red;

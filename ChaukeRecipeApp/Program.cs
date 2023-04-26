@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spectre.Console;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -9,23 +10,30 @@ namespace ChaukeRecipeApp
 {
     internal class Program
     {
-       
+        //
+        static RecipeMethods methods = new RecipeMethods();
 
+        //
+        static ConsoleColor red = ConsoleColor.Red;
+
+        //
         static void Main(string[] args)
         {
+                      
+            while (true)
+            {
+                Console.ForegroundColor = red;
+                Console.WriteLine("**************************************************\n");
+                Console.ResetColor();
+
+                Console.ForegroundColor = red;
+                Console.WriteLine("***************Sanele RECIPE JOURNAL**************\n");
+                Console.ResetColor();               
+
+                Program.mainMenu();//
+
+            }
             
-
-            ConsoleColor red = ConsoleColor.Red;
-
-            Console.ForegroundColor = red;
-            Console.WriteLine("********************************************************************\n");
-            Console.ResetColor();
-
-            Console.ForegroundColor = red;
-            Console.WriteLine("**********************Sanele RECIPE JOURNAL*************************\n");
-            Console.ResetColor();
-
-            Program.mainMenu();
 
         }
 
@@ -33,13 +41,26 @@ namespace ChaukeRecipeApp
 
         public static void mainMenu()
         {
-            //The menu will prompt the user to select an option
-            Console.WriteLine("Choose an option: \n" +
-                "1. Create Recipe \n" +
-                "2. Diplay Recipe \n" +
-                "3. Clear Data \n" +
-                "4. Reset Quantities \n" +
-                "5. Exist \n");
+            //
+            var tableMenu = new Table();
+
+            //
+            tableMenu.AddColumn("Menu : Choose an option ");
+            tableMenu.AddRow("1. Create Recipe ");
+            tableMenu.AddRow("2. Diplay Recipe ");
+            tableMenu.AddRow("3. Scale Quantities ");
+            tableMenu.AddRow("4. Clear Data ");
+            tableMenu.AddRow("5. Reset Quantities ");
+            tableMenu.AddRow("6. Exist ");
+
+            tableMenu.BorderColor(color: Color.BlueViolet);//Adding color to table Border
+
+            tableMenu.Width(50);//setting a width for the table
+
+            tableMenu.Border(TableBorder.Horizontal);//Setting the border style 
+
+            AnsiConsole.Write(tableMenu);//
+
 
             int menuOption = Convert.ToInt16(Console.ReadLine());//Reads the user input into variable menuOption 
 
@@ -59,22 +80,35 @@ namespace ChaukeRecipeApp
             }
             else if (menuOption == 3)
             {
+                //Calling the method to scale Quantities
+
+                RecipeMethods.clearRecipeData();
+
+                
+            }
+            else if (menuOption == 4)
+            {
                 //Calling the method to clear data
 
                 RecipeMethods.clearRecipeData();
-            }
-            else if (menuOption == 4)
+
+
+            }else if (menuOption == 5)
             {
                 //Calling the method to reset quantities
 
                 RecipeMethods.resetQuantities();
             }
-            else if (menuOption == 5)
+            else if (menuOption == 6)
             {
                 //The Program will exist
 
                 Environment.Exit(0);
             }
+
+            Console.ForegroundColor = red;
+            Console.WriteLine("**************************************************\n");
+            Console.ResetColor();
 
 
 
@@ -84,14 +118,31 @@ namespace ChaukeRecipeApp
 
         public static void in_methodMenu()
         {
-            Console.WriteLine("Enter (1) to lauch menu else to exist ");
+
+            //
+            var tableMenu = new Table();
+
+            //
+            tableMenu.AddColumn("Menu : Choose an option: ");
+            tableMenu.AddRow("Enter (1) to lauch menu else to exist ");
+            
+
+            tableMenu.BorderColor(color: Color.Aquamarine3);//Adding color to table Border
+
+            tableMenu.Width(50);//setting a width for the table
+
+            tableMenu.Border(TableBorder.Horizontal);//Setting the border style 
+
+            AnsiConsole.Write(tableMenu);//
+
+            //Console.WriteLine("Enter (1) to lauch menu else to exist ");
             int menu = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("\n");
 
             if (menu == 1)
             {
-                //main program menu 
+                //Calling the main program menu 
                 Program.mainMenu();
 
 
@@ -102,6 +153,10 @@ namespace ChaukeRecipeApp
                 System.Environment.Exit(0);
 
             }
+
+            Console.ForegroundColor = red;
+            Console.WriteLine("**************************************************\n");
+            Console.ResetColor();
 
         }
 

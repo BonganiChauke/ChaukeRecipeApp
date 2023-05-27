@@ -17,10 +17,15 @@ namespace ChaukeRecipeApp
         //Declaring Object reference for Recipe Class to get the attributes
         static Recipe recipeClassObject = new Recipe();
 
+        //Declaring object reference for Ingredient Class as List to add user input into
+        static List<Ingredients> ingredientsClassObject = new List<Ingredients>();
+
         //Declaring variables for user inputs 
-        //static string ingredientName;
-        //static string ingredientUnitMeasurement;
-        //static int ingredientQuantity;
+        static string ingredientName;
+        static string ingredientUnitMeasurement;
+        static double ingredientQuantity;
+        static int ingredientCalories;
+        static string ingredientFoodGroup;
         //static string ingredientStepsDescription;
 
         //Single Arrays to assign them to properties in the Recipe class
@@ -37,13 +42,6 @@ namespace ChaukeRecipeApp
 
         //To change color in console when executing 
         static ConsoleColor red = ConsoleColor.Red;
-
-        //
-        static DataTable dtable = new DataTable();
-
-        //static Table ingredientTable = new Table();
-
-
 
         public static void captureRecipe()
         {
@@ -76,18 +74,7 @@ namespace ChaukeRecipeApp
 
             //for loop which will iterate to the numberOfIngredient which prompt the user for ingredient name, quantity and unit measurement
             for (int r = 0; r < numberOfIngredient; r++)
-            {
-
-                //Console.WriteLine("Enter ingredient name: " + nameCounter++);//Prompts the user for ingredient name
-                //ingredientNameArray[r] = Console.ReadLine();//Reads the input into the ingredientName variable
-
-                //Console.WriteLine("Enter the quantity: ");//Prompts the user for the quantity 
-                //ingredientQuantityArray[r] = Convert.ToInt16(Console.ReadLine());//Reads the input into the quantity variable
-
-                //Console.WriteLine("Enter the unit measurement: ");//Prompts the user for unit measurement
-                //ingredientUnitMeasurementArray[r] = Console.ReadLine();//Reads the input into the unit measurement variable
-
-                
+            {//numberOfIngredient[S]
 
                 try//
                 {
@@ -120,7 +107,7 @@ namespace ChaukeRecipeApp
 
                 Console.WriteLine("\n");
 
-            }
+            }//numberOfIngredient loop [E]
 
             Console.ForegroundColor = red;
             Console.WriteLine("**************************************************\n");

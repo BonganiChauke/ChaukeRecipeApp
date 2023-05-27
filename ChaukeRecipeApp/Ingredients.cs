@@ -63,7 +63,7 @@ namespace ChaukeRecipeApp
             IngredientFoodGroup = ingredientFoodGroup;
         }
 
-        //Override the constructor
+        //Override the constructor with the values
 
         public override string ToString()
         {

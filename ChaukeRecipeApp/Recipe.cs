@@ -10,66 +10,45 @@ namespace ChaukeRecipeApp
     {
         //Declaring Properties Variables as private for recipe
 
-        private String [] ingredientNameProperty; //field
-        private String [] ingredientUnitMeasurementProperty;//field
-        private int[] ingredientQuantityProperty;//field
-        private String [] ingredientStepDescriptionProperty;//field
-        private int updateQuantityInt;//field
-        private double updateQuantityDouble;//field
-        private string unitMeasurementUpdate;//field
+        private String ingredientRecipeName; //field
+        
 
-            
+        //Declarinng a class Ingredient as a list
+        public List<Ingredients> IngredientsClass
+        {
+            get;set;
+        }
 
-        //Overloaded Constructor for setting values to the  attributes
+        //Declaring a class Steps as a list
+        public List<Steps> StepsClass
+        {
+            get;set;
+        }
 
         //Automatic Property for ingredientName
 
-        public string [] IngredientNameProperty
+        public string IngredientRecipeName
         {
             get;set;
         }
 
-        //Automatic Property for ingredientUnitMeasuremnt
+        //Overloaded Constructor for setting values to the  attributes
 
-        public string [] IngredientUnitMeasurementProperty
+        public Recipe(string ingredientRecipeName)
         {
-            get;set;
+            IngredientRecipeName = ingredientRecipeName;
+            IngredientsClass = new List<Ingredients>();
         }
 
-        //Automatic Property for ingredientQuantity 
+        //Overloaded constructor that will pass the values 
 
-        public int [] IngredientQuantityProperty
+        public override string ToString()
         {
-            get;set;
+            return $"Recipe Name: {IngredientRecipeName}";
         }
 
-        //Automatic Property for ingredientStepDescription
 
-        public string [] IngredientStepDescriptionProperty
-        {
-            get;set;
-        }
 
-        //Automatic Property for updateQuantityInt
-
-        public int UpdateQuantityInt
-        {
-            get;set;
-        }
-
-        //Automatic Property for updateQuantityDouble
-
-        public double UpdateQuantityDouble
-        {
-            get;set;
-        }
-
-        //Automatic Property for unitMeasurementUpdate
-
-        public string UnitMeasurementUpdate
-        {
-            get;set;
-        }
 
     }
 }

@@ -15,30 +15,31 @@ namespace ChaukeRecipeApp
     internal class RecipeMethods
     {
         //Declaring Object reference for Recipe Class to get the attributes
-        static Recipe recipeClassObject = new Recipe();
+        static List<Recipe> recipeClassObject = new List<Recipe>();
 
         //Declaring object reference for Ingredient Class as List to add user input into
         static List<Ingredients> ingredientsClassObject = new List<Ingredients>();
 
+        //Decalring object reference for Steps Class as list to add user input into
+        static List<Steps> stepsClassObject = new List<Steps>();
+
         //Declaring variables for user inputs 
+        static string ingredientRecipeName;
         static string ingredientName;
         static string ingredientUnitMeasurement;
         static double ingredientQuantity;
         static int ingredientCalories;
         static string ingredientFoodGroup;
-        //static string ingredientStepsDescription;
-
-        //Single Arrays to assign them to properties in the Recipe class
-        static string[] ingredientNameArray;
-        static string[] ingredientUnitMeasurementArray;
-        static int[] ingredientQuantityArray;
-        static string[] ingredientStepsDescriptionArray;
+        static string ingredientStepsDescription;
 
         //variable to get number of ingredient from user
         static int numberOfIngredient;
 
         //variable to get number of steps from user
         static int numberOfSteps;
+
+        //variable to get number of recipe from user
+        static int numberOfRecipes;
 
         //To change color in console when executing 
         static ConsoleColor red = ConsoleColor.Red;

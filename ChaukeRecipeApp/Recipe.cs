@@ -38,9 +38,10 @@ namespace ChaukeRecipeApp
         {
             IngredientRecipeName = ingredientRecipeName;
             IngredientsClass = new List<Ingredients>();
+            StepsClass = new List<Steps>();
         }
 
-        //Overloaded constructor that will pass the values 
+        //Override constructor with the values 
 
         public override string ToString()
         {

@@ -16,6 +16,7 @@ namespace ChaukeRecipeApp
         private String [] ingredientStepDescriptionProperty;//field
         private int updateQuantityInt;//field
         private double updateQuantityDouble;//field
+        private string unitMeasurementUpdate;//field
 
             
 
@@ -59,6 +60,13 @@ namespace ChaukeRecipeApp
         //Automatic Property for updateQuantityDouble
 
         public double UpdateQuantityDouble
+        {
+            get;set;
+        }
+
+        //Automatic Property for unitMeasurementUpdate
+
+        public string UnitMeasurementUpdate
         {
             get;set;
         }

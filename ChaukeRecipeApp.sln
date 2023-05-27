@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePOE", "..\ConsolePOE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROG.POE1", "..\..\..\Desktop\DIS\PROG.POE\PROG.POE1\PROG.POE1.csproj", "{510277CC-FBAE-4820-AFF0-834FC801BD0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part2-Test", "Part2-Test\Part2-Test.csproj", "{D42E6F00-A3D7-4486-8FDB-520BA82BBBED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{510277CC-FBAE-4820-AFF0-834FC801BD0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{510277CC-FBAE-4820-AFF0-834FC801BD0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{510277CC-FBAE-4820-AFF0-834FC801BD0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D42E6F00-A3D7-4486-8FDB-520BA82BBBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D42E6F00-A3D7-4486-8FDB-520BA82BBBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D42E6F00-A3D7-4486-8FDB-520BA82BBBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D42E6F00-A3D7-4486-8FDB-520BA82BBBED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

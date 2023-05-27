@@ -78,16 +78,40 @@ namespace ChaukeRecipeApp
             for (int r = 0; r < numberOfIngredient; r++)
             {
 
-                Console.WriteLine("Enter ingredient name: " + nameCounter++);//Prompts the user for ingredient name
-                ingredientNameArray[r] = Console.ReadLine();//Reads the input into the ingredientName variable
+                //Console.WriteLine("Enter ingredient name: " + nameCounter++);//Prompts the user for ingredient name
+                //ingredientNameArray[r] = Console.ReadLine();//Reads the input into the ingredientName variable
 
-                Console.WriteLine("Enter the quantity: ");//Prompts the user for the quantity 
-                ingredientQuantityArray[r] = Convert.ToInt16(Console.ReadLine());//Reads the input into the quantity variable
+                //Console.WriteLine("Enter the quantity: ");//Prompts the user for the quantity 
+                //ingredientQuantityArray[r] = Convert.ToInt16(Console.ReadLine());//Reads the input into the quantity variable
 
-                Console.WriteLine("Enter the unit measurement: ");//Prompts the user for unit measurement
-                ingredientUnitMeasurementArray[r] = Console.ReadLine();//Reads the input into the unit measurement variable
+                //Console.WriteLine("Enter the unit measurement: ");//Prompts the user for unit measurement
+                //ingredientUnitMeasurementArray[r] = Console.ReadLine();//Reads the input into the unit measurement variable
 
+                
 
+                try//
+                {
+                    Console.WriteLine("Enter ingredient name: " + nameCounter++);//Prompts the user for ingredient name
+                    ingredientNameArray[r] = Console.ReadLine();//Reads the input into the ingredientName variable
+
+                    Console.WriteLine("Enter the quantity: ");//Prompts the user for the quantity 
+                    ingredientQuantityArray[r] = Convert.ToInt16(Console.ReadLine());//Reads the input into the quantity variable
+
+                    Console.WriteLine("Enter the unit measurement: ");//Prompts the user for unit measurement
+                    ingredientUnitMeasurementArray[r] = Console.ReadLine();//Reads the input into the unit measurement variable
+
+                }
+                catch//
+                {
+                    //
+                    if (ingredientNameArray[r] == null || ingredientUnitMeasurementArray[r] == null || ingredientQuantityArray[r] == 0)
+                    {
+                        Console.WriteLine("Can not be null");//
+                        captureRecipe();
+
+                    }
+
+                }
 
                 recipeClassObject.IngredientNameProperty[r] = ingredientNameArray[r]; //Assigning ingredientNameArray to property IngredientNameProperty
                 recipeClassObject.IngredientQuantityProperty[r] = ingredientQuantityArray[r]; //Assigning ingredientNameArray to property ingredientQuantityArray
@@ -242,7 +266,7 @@ namespace ChaukeRecipeApp
 
                 int scaleOption = Convert.ToInt16(Console.ReadLine());//Reads the user input to scaleOption variable
 
-                var ingredientQuantityUpdate = new Table();//
+                var ingredientQuantityUpdate = new Table();//Declaring the an instance of a table class in spectre class for ingredient
 
                 ingredientQuantityUpdate.AddColumn(new TableColumn(header: "Ingredients "));//A header for ingredients 
                 ingredientQuantityUpdate.AddColumn(new TableColumn(header: "Recipe "));//A header Recipe
@@ -278,7 +302,7 @@ namespace ChaukeRecipeApp
                                 ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityDouble + "" + ingredientUnitMeasurementArray[b].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
                             }
-                            //AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+                            AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
 
 
                         }
@@ -301,12 +325,24 @@ namespace ChaukeRecipeApp
 
 
                         }
-                        
+                        else
+                        {
+
+                            ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[b].ToUpper());//Adding row for ingredientNameArray
+
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientQuantityArray[b] + " " + ingredientUnitMeasurementArray[0] + "\n");//Adding row for ingredie
+
+                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+
+                        }
+
+                        //AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+
 
 
                     }
 
-                    AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+                    //AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
                     Program.in_methodMenu();//call to diplay menu
 
                 }
@@ -321,94 +357,108 @@ namespace ChaukeRecipeApp
                             if (recipeClassObject.UpdateQuantityInt <= 8)
                             {
 
-                                ingredientUnitMeasurementArray[o] = "1/2 Cup";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "1/2 Cup";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
-
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
 
                             }
                             else if (recipeClassObject.UpdateQuantityInt == 12 && recipeClassObject.UpdateQuantityInt > 8)
                             {
-                                ingredientUnitMeasurementArray[o] = "3/4 Cup";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "3/4 Cup";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
-
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 12 && recipeClassObject.UpdateQuantityInt == 16)
                             {
-                                ingredientUnitMeasurementArray[o] = "1 Cup";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "1 Cup";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
 
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 16 && recipeClassObject.UpdateQuantityInt <= 32)
                             {
-                                ingredientUnitMeasurementArray[o] = "2 Cups";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "2 Cups";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 32 && recipeClassObject.UpdateQuantityInt <= 64)
                             {
-                                ingredientUnitMeasurementArray[o] = "4 Cups";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "4 Cups";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredie
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredie
 
                                 AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
 
                             }
 
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
-                            Program.in_methodMenu();//call to diplay menu
+                            //AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+                            //Program.in_methodMenu();//call to diplay menu
 
+
+                        }else
+                        {
+
+                            ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
+
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientQuantityArray[o] + " " + ingredientUnitMeasurementArray[0] + "\n");//Adding row for ingredie
+
+                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
 
                         }
-                        else if (ingredientUnitMeasurementArray[o].Contains("teaspoon") || ingredientUnitMeasurementArray[o].Contains("teaspoons"))//if teaspoon found from user input the program will do the following calculation and update units measurements 
+
+                        AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+                        if (ingredientUnitMeasurementArray[o].Contains("teaspoon") || ingredientUnitMeasurementArray[o].Contains("teaspoons"))//if teaspoon found from user input the program will do the following calculation and update units measurements 
                         {
                             if (recipeClassObject.UpdateQuantityInt <= 3)
                             {
 
-                                ingredientUnitMeasurementArray[o] = "1 tablespoon";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "1 tablespoon";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
 
 
                             }
                             else if (recipeClassObject.UpdateQuantityInt == 6 && recipeClassObject.UpdateQuantityInt > 3)
                             {
-                                ingredientUnitMeasurementArray[o] = "2 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "2 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
-
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 6 && recipeClassObject.UpdateQuantityInt == 12)
                             {
-                                ingredientUnitMeasurementArray[o] = "4 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "4 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
-
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 12 && recipeClassObject.UpdateQuantityInt <= 16)
                             {
@@ -416,69 +466,78 @@ namespace ChaukeRecipeApp
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 16 && recipeClassObject.UpdateQuantityInt <= 24)
                             {
-                                ingredientUnitMeasurementArray[o] = "8 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "8 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredie
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredie
 
-
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 24 && recipeClassObject.UpdateQuantityInt <= 36)
                             {
-                                ingredientUnitMeasurementArray[o] = "12 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "12 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredie
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredie
 
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
 
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 36 && recipeClassObject.UpdateQuantityInt <= 48)
                             {
-                                ingredientUnitMeasurementArray[o] = "16 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "16 tablespoons";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredient
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredient
 
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 48 && recipeClassObject.UpdateQuantityInt <= 96)
                             {
-                                ingredientUnitMeasurementArray[o] = "32 tablespoon";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "32 tablespoon";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredie
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredie
 
+                                AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
 
                             }
                             else if (recipeClassObject.UpdateQuantityInt > 96 && recipeClassObject.UpdateQuantityInt <= 196)
                             {
-                                ingredientUnitMeasurementArray[o] = "64 tablespoon";//ingredientUnitMeasurementArray will have a new updated value
+                                recipeClassObject.UnitMeasurementUpdate = "64 tablespoon";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientUnitMeasurementArray[o].ToUpper() + "\n");//Adding row for ingredie
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredie
 
+                                //AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
 
                             }
 
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+                            
 
                         }
+
                         AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+
 
                     }
                     AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
                     Program.in_methodMenu();//Displays menu
 
                 }
+
+            
                 else if (scaleOption == 3)
                 {
                     //for loop to search through the loop to the length of array
@@ -488,13 +547,23 @@ namespace ChaukeRecipeApp
 
                         if(recipeClassObject.UpdateQuantityInt > 1)//
                         {
-                            ingredientUnitMeasurementArray[n] = " Cups";//
+                            recipeClassObject.UnitMeasurementUpdate = " Cups";//
 
                             ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[n].ToUpper());//Adding row for ingredientNameArray
 
-                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityInt + " " + ingredientUnitMeasurementArray[n].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityInt + " " + recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
 
+
+                        }
+                        else
+                        {
+
+                            ingredientQuantityUpdate.AddRow("Ingredient Name ", ingredientNameArray[n].ToUpper());//Adding row for ingredientNameArray
+
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientQuantityArray[n] + " " + ingredientUnitMeasurementArray[0] + "\n");//Adding row for ingredie
+
+                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
 
                         }
 
@@ -625,15 +694,15 @@ namespace ChaukeRecipeApp
 
                         if (recipeClassObject.UpdateQuantityDouble == (int)ingredientQuantityArray[a])//reseting the double object to original quantities
                         {
-                            recipeClassObject.UpdateQuantityDouble = (int)ingredientQuantityArray[a];
+                            recipeClassObject.UpdateQuantityDouble = (int)ingredientQuantityArray[a];//cast 
 
                             ingredientQuantityArray[a] = ingredientQuantityArray[a];//reseting the value ingredient name 
 
-                            ingredientUnitMeasurementArray[a] = ingredientUnitMeasurementArray[a];//reseting the units measurement
+                            recipeClassObject.UnitMeasurementUpdate = ingredientUnitMeasurementArray[a];//reseting the units measurement
 
                             resetTable.AddRow("Ingredient Name ", ingredientNameArray[a].ToUpper());//Adding row for ingredientNameArray
 
-                            resetTable.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityDouble + " " + ingredientUnitMeasurementArray[a].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                            resetTable.AddRow("Quantity and Unit Measurement ", recipeClassObject.UpdateQuantityDouble + " " + recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
                             
                         }
                         
@@ -643,11 +712,11 @@ namespace ChaukeRecipeApp
 
                             ingredientQuantityArray[a] = ingredientQuantityArray[a];//reseting the value ingredient name
 
-                            ingredientUnitMeasurementArray[a] = ingredientUnitMeasurementArray[a];//reseting the units measurement
+                            recipeClassObject.UnitMeasurementUpdate = ingredientUnitMeasurementArray[a];//reseting the units measurement
 
                             resetTable.AddRow("Ingredient Name ", ingredientNameArray[a].ToUpper());//Adding row for ingredientNameArray
 
-                            resetTable.AddRow("Quantity and Unit Measurement ", ingredientQuantityArray[a] + " " + ingredientUnitMeasurementArray[a].ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                            resetTable.AddRow("Quantity and Unit Measurement ", ingredientQuantityArray[a] + " " + recipeClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
                         }
                         AnsiConsole.Write(resetTable);//Displays to the console

@@ -10,28 +10,28 @@ namespace ChaukeRecipeApp
 {
     internal class Program
     {
-        
-
         //color to style the program
         static ConsoleColor red = ConsoleColor.Red;
 
         //main to execute the program
         static void Main(string[] args)
         {
-                      
+
+            Console.ForegroundColor = red;
+            Console.WriteLine("**************************************************\n");
+            Console.ResetColor();
+
+            Console.ForegroundColor = red;
+            Console.WriteLine("***************Sanele RECIPE JOURNAL**************\n");
+            Console.ResetColor();
+
             while (true)
             {
-                Console.ForegroundColor = red;
-                Console.WriteLine("**************************************************\n");
-                Console.ResetColor();
 
-                Console.ForegroundColor = red;
-                Console.WriteLine("***************Sanele RECIPE JOURNAL**************\n");
-                Console.ResetColor();               
 
                 Program.mainMenu();//Calling the main method to prompt the user
 
-            }
+            }    
             
 
         }

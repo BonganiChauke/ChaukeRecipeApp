@@ -14,7 +14,9 @@ namespace ChaukeRecipeApp
         private string ingredientUnitMeasurement;//field
         private int ingredientCalories;//field
         private string ingredientFoodGroup;//field
-        
+        private double scaleQuantity;//field
+        private string unitMeasurementUpdate;//field
+
         //Automatic property for ingredient name
 
         public string IngredientName
@@ -46,6 +48,20 @@ namespace ChaukeRecipeApp
         //Automatic property for select food group
 
         public string IngredientFoodGroup
+        {
+            get;set;
+        }
+
+        //Automatic property for scale Quantity
+
+        public double ScaleQuantity
+        {
+            get;set;
+        }
+
+        //Automatic property for UnitMeasurementUpdate
+
+        public string UnitMeasurementUpdate
         {
             get;set;
         }

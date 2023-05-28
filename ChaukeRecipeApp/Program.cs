@@ -25,10 +25,10 @@ namespace ChaukeRecipeApp
             Console.WriteLine("***************Sanele RECIPE JOURNAL**************\n");
             Console.ResetColor();
 
+
+
             while (true)
             {
-
-
                 Program.mainMenu();//Calling the main method to prompt the user
 
             }    

@@ -10,7 +10,7 @@ namespace ChaukeRecipeApp
     {
         //Declaring Properties Variables as private for recipe
 
-        private String ingredientRecipeName; //field
+        private String recipeName; //field
         
 
         //Declarinng a class Ingredient as a list
@@ -27,16 +27,16 @@ namespace ChaukeRecipeApp
 
         //Automatic Property for ingredientName
 
-        public string IngredientRecipeName
+        public string RecipeName
         {
             get;set;
         }
 
         //Overloaded Constructor for setting values to the  attributes
 
-        public Recipe(string ingredientRecipeName)
+        public Recipe(string recipeName)
         {
-            IngredientRecipeName = ingredientRecipeName;
+            RecipeName = recipeName;
             IngredientsClass = new List<Ingredients>();
             StepsClass = new List<Steps>();
         }
@@ -45,7 +45,7 @@ namespace ChaukeRecipeApp
 
         public override string ToString()
         {
-            return $"Recipe Name: {IngredientRecipeName}";
+            return $"Recipe Name: {RecipeName}";
         }
 
 

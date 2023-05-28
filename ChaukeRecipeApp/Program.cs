@@ -18,11 +18,11 @@ namespace ChaukeRecipeApp
         {
 
             Console.ForegroundColor = red;
-            Console.WriteLine("**************************************************\n");
+            Console.WriteLine("**********************************************************************\n");
             Console.ResetColor();
 
             Console.ForegroundColor = red;
-            Console.WriteLine("***************Sanele RECIPE JOURNAL**************\n");
+            Console.WriteLine("************************Sanele RECIPE JOURNAL*************************\n");
             Console.ResetColor();
 
 
@@ -54,7 +54,7 @@ namespace ChaukeRecipeApp
 
             tableMenu.BorderColor(color: Color.BlueViolet);//Adding color to table Border
 
-            tableMenu.Width(50);//setting a width for the table
+            tableMenu.Width(70);//setting a width for the table
 
             tableMenu.Border(TableBorder.Horizontal);//Setting the border style 
 
@@ -62,6 +62,7 @@ namespace ChaukeRecipeApp
 
 
             int menuOption = Convert.ToInt16(Console.ReadLine());//Reads the user input into variable menuOption 
+            Console.WriteLine("\n");
 
             if (menuOption == 1)
             {
@@ -106,7 +107,7 @@ namespace ChaukeRecipeApp
             }
 
             Console.ForegroundColor = red;
-            Console.WriteLine("**************************************************\n");
+            Console.WriteLine("**********************************************************************\n");
             Console.ResetColor();
 
 
@@ -128,7 +129,7 @@ namespace ChaukeRecipeApp
 
             tableMenu.BorderColor(color: Color.Aquamarine3);//Adding color to table Border
 
-            tableMenu.Width(50);//setting a width for the table
+            tableMenu.Width(70);//setting a width for the table
 
             tableMenu.Border(TableBorder.Horizontal);//Setting the border style 
 
@@ -155,7 +156,7 @@ namespace ChaukeRecipeApp
             }
 
             Console.ForegroundColor = red;
-            Console.WriteLine("**************************************************\n");
+            Console.WriteLine("**********************************************************************\n");
             Console.ResetColor();
 
         }

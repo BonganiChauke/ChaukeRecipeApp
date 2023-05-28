@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
+using System.Diagnostics.PerformanceData;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
@@ -16,7 +17,7 @@ namespace ChaukeRecipeApp
     {
         //Declaring Object reference for Recipe Class to get the attributes
         static List<Recipe> recipeClassObject = new List<Recipe>();
-        
+
         //Declaring object reference for Ingredient Class as List and also an object reference to add user input into
         static List<Ingredients> ingredientsClassObject = new List<Ingredients>();
         static Ingredients ingredientsUpdateClassObject = new Ingredients(ingredientName, ingredientQuantity, ingredientUnitMeasurement, ingredientCalories, ingredientFoodGroup);
@@ -60,20 +61,20 @@ namespace ChaukeRecipeApp
         static List<int> newIngredientCaloriesVariable = new List<int>(ingredientsClassObject.Count);
         static List<string> newIngredientFoodGroupVariable = new List<string>(ingredientsClassObject.Count);
         static List<string> newIngredientStepsDescriptionVariable = new List<string>(stepsClassObject.Count);
-        
+
         //To change color in console when executing 
         static ConsoleColor red = ConsoleColor.Red;
 
         public static void captureRecipe()
         {//captureRecipe method [S]
-           
+
             try//
             {//try [S]
 
                 Console.WriteLine("\n");
                 String createRecipe = "Create Recipe";
                 Console.ForegroundColor = red;
-                Console.WriteLine("**************** " + createRecipe.ToUpper() + " *******************\n");
+                Console.WriteLine("**************************** " + createRecipe.ToUpper() + " ***************************\n");
                 Console.ResetColor();
 
 
@@ -123,7 +124,7 @@ namespace ChaukeRecipeApp
 
                         String foodCalories = "Food Group and Calories";
                         Console.ForegroundColor = red;
-                        Console.WriteLine("********* " + foodCalories.ToUpper() + " ****************\n");
+                        Console.WriteLine("************************ " + foodCalories.ToUpper() + " *********************\n");
                         Console.ResetColor();
 
                         var descriptionOfFoodGroupCalories = new Table();//Declaring the an instance of a table class in spectre class      
@@ -133,7 +134,7 @@ namespace ChaukeRecipeApp
 
                         //Table style
                         descriptionOfFoodGroupCalories.BorderColor(color: Color.Chartreuse2);//Adding color to table Border
-                        descriptionOfFoodGroupCalories.Width(50);//setting a width for the table
+                        descriptionOfFoodGroupCalories.Width(70);//setting a width for the table
                         descriptionOfFoodGroupCalories.Border(TableBorder.Horizontal);//Setting the border style
 
                         //An explanation of what a food group is and what are calories
@@ -163,8 +164,8 @@ namespace ChaukeRecipeApp
                         foodGroup.AddRow("7. Water");
 
                         //Table style
-                        foodGroup.BorderColor(color: Color.BlueViolet);//Adding a color for table border
-                        foodGroup.Width(50);//Setting a width for the table
+                        foodGroup.BorderColor(color: Color.DarkOrange3_1);//Adding a color for table border
+                        foodGroup.Width(70);//Setting a width for the table
                         foodGroup.Border(TableBorder.Horizontal);//Setting the table border style
 
                         AnsiConsole.Write(foodGroup);//Displays to the console
@@ -175,8 +176,8 @@ namespace ChaukeRecipeApp
 
                         var foodGroupDetails = new Table();//Declaring the an instance of a table class in spectre class
                         //foodGroupDetails.AddColumn("Food Group Brieft");//Column for brieft
-                        foodGroupDetails.BorderColor(color: Color.Blue1);//Setting the table color
-                        foodGroupDetails.Width(50);//Setting a width for the table
+                        foodGroupDetails.BorderColor(color: Color.DarkGoldenrod);//Setting the table color
+                        foodGroupDetails.Width(70);//Setting a width for the table
                         foodGroupDetails.Border(TableBorder.HeavyHead);//setting the table border
 
                         switch (selectFoodGroup)//To check user input
@@ -253,7 +254,7 @@ namespace ChaukeRecipeApp
 
                     String stepss = "Steps";
                     Console.ForegroundColor = red;
-                    Console.WriteLine("****************** " + stepss.ToUpper() + " *************************\n");
+                    Console.WriteLine("**************************** " + stepss.ToUpper() + " ************************************\n");
                     Console.ResetColor();
 
                     Console.WriteLine("\n");
@@ -268,17 +269,17 @@ namespace ChaukeRecipeApp
                     for (int g = 0; g < numberOfSteps; g++)
                     {//numberOfSteps loop [S]
 
-                        Console.WriteLine($"Enter a description for step {g + 1}:");//Prompts the user for step(s) description
+                        Console.Write($"Enter a description for step {g + 1}: ");//Prompts the user for step(s) description
                         ingredientStepsDescription = Console.ReadLine();//Reads user input into ingredientStepsDescription variable
 
                         //Declaring the overloaded constructor of the Steps class
                         Steps stepsAdd = new Steps(ingredientStepsDescription);
                         recipeAdd.StepsClass.Add(stepsAdd);//Adding to the list
 
-                        Console.WriteLine("\n");
+
 
                     }//numberOfSteps loop [E]
-
+                    Console.WriteLine("\n");
 
 
 
@@ -297,14 +298,14 @@ namespace ChaukeRecipeApp
 
         }//Capture Method [E]
         public static void displayRecipe()//Void method because we return a value
-        {
+        {//display method [S]
 
             try//
             {//try [S]
 
                 String recipe = "The Recipe";
                 Console.ForegroundColor = red;
-                Console.WriteLine("****************** " + recipe.ToUpper() + " ********************\n");
+                Console.WriteLine("*************************** " + recipe.ToUpper() + " *******************************\n");
                 Console.ResetColor();
 
                 var chooseDisplayTable = new Table();//Declaring the an instance of a table class in spectre class 
@@ -315,7 +316,7 @@ namespace ChaukeRecipeApp
                 //Table style
 
                 chooseDisplayTable.BorderColor(color: Color.DarkOrange);//Adding color to table
-                chooseDisplayTable.Width(50);//Adding width to the table
+                chooseDisplayTable.Width(70);//Adding width to the table
                 chooseDisplayTable.Border(TableBorder.Horizontal);//Setting the border style
 
                 AnsiConsole.Write(chooseDisplayTable);//Displays to the console
@@ -329,83 +330,83 @@ namespace ChaukeRecipeApp
                         //Sorting recipe names in recipes class list
                         recipeClassObject.Sort((x, y) => string.Compare(x.RecipeName, y.RecipeName));
 
-                        var ingredientTable = new Table();//Declaring the an instance of a table class in spectre class for ingredient
-
-                        //For each loop 
+                        //For each loop through the collection
                         foreach (Recipe displayRecipeName in recipeClassObject)
                         {//1st foreach loop [S]
 
-                            ingredientTable.AddColumn(new TableColumn(header: displayRecipeName.RecipeName));//A header for ingredients 
-
-
+                            //nested foreach loops to loop through the items in the collections
                             foreach (Ingredients printIngredients in displayRecipeName.IngredientsClass)
                             {//Ingredient foreach loop [S]
 
-                                ingredientTable.AddColumn(new TableColumn(header: "Ingredients "));//A header Recipe
+                                var ingredientTable = new Table();//Declaring the an instance of a table class in spectre class
 
-                                ingredientTable.AddRow("Ingredient Name ", printIngredients.IngredientName.ToUpper());//
-                                ingredientTable.AddRow("Ingredient Quantity and Unit Measurement ", printIngredients.IngredientQuantity + "" + printIngredients.IngredientUnitMeasurement.ToUpper());//
-                                ingredientTable.AddRow("Calories " + printIngredients.IngredientCalories);//
-                                ingredientTable.AddRow("Food Group ", printIngredients.IngredientFoodGroup.ToUpper());//
+                                ingredientTable.AddColumn(new TableColumn(header: $"{displayRecipeName.RecipeName.ToUpper()} Recipe"));//Header displays recipe name
+                                ingredientTable.AddColumn(new TableColumn(header: "Ingredients"));//Header for ingredients
+                                ingredientTable.AddRow("Ingredient Name", printIngredients.IngredientName.ToUpper());//Adding row to diplay ingredient name
+                                ingredientTable.AddRow("Quantity and Measurement", printIngredients.IngredientQuantity + " " + printIngredients.IngredientUnitMeasurement.ToUpper());//Adding row to diplay quantity and unit measurement
+                                ingredientTable.AddRow("Calories", printIngredients.IngredientCalories + "");//Adding row to diplay calories
+                                ingredientTable.AddRow("Food Group", printIngredients.IngredientFoodGroup.ToUpper());//Adding row to diplay food group
 
                                 //Table style
-
                                 ingredientTable.BorderColor(color: Color.BlueViolet);//Adding color to table Border
-
-                                ingredientTable.Width(50);//setting a width for the table
-
+                                ingredientTable.Width(70);//setting a width for the table
                                 ingredientTable.Border(TableBorder.Horizontal);//Setting the border style
+
+                                Console.WriteLine("\n");
+
+                                AnsiConsole.Write(ingredientTable);//Diplay table to console
+
 
                             }//Ingredient foreach loop [E]
 
-                            var tableSteps = new Table();//Declaring the an instance of a table class in spectre class for steps
-
-                            tableSteps.AddColumn(new TableColumn(header: "Steps "));//Column for steps header
 
                             int stepCounter = 1;//To count each steps
+                            var tableSteps = new Table();//Declaring the an instance of a table class in spectre class
+
+                            tableSteps.AddColumn(new TableColumn(header: "Steps"));//Header for steps
 
                             //
                             foreach (Steps printSteps in displayRecipeName.StepsClass)
                             {
-                                tableSteps.AddRow($"Step {stepCounter}: ", printSteps.IngredientStepsDescription);//
+                                //Adding row to diplay steps
+                                tableSteps.AddRow($"Step {stepCounter}: " + printSteps.IngredientStepsDescription);
                                 stepCounter++;
 
+                                //Table Style
                                 tableSteps.BorderColor(color: Color.DarkRed);//color to the border
-
-                                tableSteps.Width(50);//Setting width size of the table
-
+                                tableSteps.Width(70);//Setting width size of the table
                                 tableSteps.Border(TableBorder.Horizontal);//Setting the border style
 
                             }
 
-                            AnsiConsole.Write(ingredientTable);//Diplay table to console
-                            AnsiConsole.Write(tableSteps);//Diplay table to console
+                            AnsiConsole.Write(tableSteps);//Display table to console
 
                         }//1st foreach loop [E]
+
 
                         break;
                     case 2:
 
-                        int recipeCouter = 1;
+                        Console.WriteLine("\n");
 
-                        var recipes = new Table();//
+                        var availableRecipes = new Table();//Declaring the an instance of a table class in spectre class
+                        availableRecipes.AddColumn(new TableColumn(header: "  Recipes saved"));//Header for recipes saved
 
-                        recipes.AddColumn(new TableColumn(header: "Recipes Recorded"));//
-
-                        //
+                        //nested foreach loops to loop through the collection and add to new variable that will used in for loops
                         foreach (Recipe recipeAvailable in recipeClassObject)
                         {//foreach loop [S]
-                            recipes.AddRow($"Recipe {recipeCouter}: ", recipeAvailable.RecipeName + " ");
-                            recipeCouter++;
-                            recipes.BorderColor(color: Color.DarkTurquoise);//color to the border
-                            recipes.Width(50);//Setting width size of the table
-                            recipes.Border(TableBorder.Horizontal);//Setting the border style
-                            newRecipeNameVariable.Add(recipeAvailable.RecipeName);//Adding recipe
 
-                            //
+                            newRecipeNameVariable.Add(recipeAvailable.RecipeName);//Adding recipe
+                            availableRecipes.AddRow(recipeAvailable.RecipeName + " Recipe ");
+                            //Table style
+                            availableRecipes.BorderColor(color: Color.DarkMagenta);//Adding color to table
+                            availableRecipes.Width(70);//Adding width to table
+                            availableRecipes.Border(TableBorder.HeavyHead);//Adding border style to table
+
+                            //loop through the collection 
                             foreach (Ingredients addIngredients in recipeAvailable.IngredientsClass)
                             {
-                                //
+                                //adding user input to the new variables so i can used them on for loops
                                 newIngredientNameVariable.Add(addIngredients.IngredientName);
                                 newIngredientQuantityVariable.Add(addIngredients.IngredientQuantity);
                                 newIngredientUnitMeasurementVariable.Add(addIngredients.IngredientUnitMeasurement);
@@ -414,7 +415,7 @@ namespace ChaukeRecipeApp
 
                             }
 
-                            //
+                            //loop through the collection and adding user input to the new variable
                             foreach (Steps addSteps in recipeAvailable.StepsClass)
                             {
                                 newIngredientStepsDescriptionVariable.Add(addSteps.IngredientStepsDescription);
@@ -422,7 +423,8 @@ namespace ChaukeRecipeApp
 
                         }//foreach loop [E]
 
-                        AnsiConsole.Write(recipes);//Diplays into console
+                        //AnsiConsole.Write(recipes);//Diplays into console
+                        AnsiConsole.Write(availableRecipes);
 
                         Console.WriteLine("\n");
 
@@ -437,49 +439,63 @@ namespace ChaukeRecipeApp
 
                         int stepCounterr = 1;//To count each steps
 
-                        var choosenRecipe = new Table();
+                        var choosenRecipe = new Table();//Declaring the an instance of a table class in spectre class
                         //for loop to search for the recipe 
-                        for (int g = 0; g < newRecipeNameVariable.Count; g++)
-                        {//for loop [S]
-                            
-                            if (chooseRecipe.Contains(newRecipeNameVariable[g]))
+
+                        //Find function to serach through the elements that finds matching values and return corresponding values
+                        Recipe recipeFind = recipeClassObject.Find(r => r.RecipeName == chooseRecipe);
+
+                        for (int i = 0; i < newRecipeNameVariable.Count; i++)
+                        {
+                            if (chooseRecipe.Contains(newRecipeNameVariable[i]))//if user input matches the saved recipe
                             {
-                                //
-                                choosenRecipe.AddColumn(new TableColumn(header: newRecipeNameVariable[g]));
-                                choosenRecipe.AddColumn(new TableColumn(header: "Ingredients"));
+                                //foreach to loop through the collection
+                                foreach (Ingredients item in recipeFind.IngredientsClass)
+                                {
+                                    var tableChoosenRecipe = new Table();//Declaring the an instance of a table class in spectre class
 
-                                //
-                                choosenRecipe.AddRow("Ingredient Name ", newIngredientNameVariable[g]);
-                                choosenRecipe.AddRow("Ingredient Quantity and Unit Measurement ", newIngredientQuantityVariable[g] + "" + newIngredientUnitMeasurementVariable[g]);
-                                choosenRecipe.AddRow("Ingredient Calories " + newIngredientCaloriesVariable[g]);
-                                choosenRecipe.AddRow("Ingredient Food Group ", newIngredientFoodGroupVariable[g]);
+                                    tableChoosenRecipe.AddColumn(new TableColumn(header: recipeFind.RecipeName + " Recipe "));//Adding header for recipe name
+                                    tableChoosenRecipe.AddColumn(new TableColumn(header: "Ingredients"));//adding for ingredients name
 
-                                //Table style
-                                choosenRecipe.BorderColor(color: Color.Cornsilk1);//color to the border
-                                choosenRecipe.Width(50);//Setting width size of the table
-                                choosenRecipe.Border(TableBorder.Horizontal);//Setting the border style
+                                    //Table Style
+                                    tableChoosenRecipe.BorderColor(color: Color.DarkRed);//Adding color to table
+                                    tableChoosenRecipe.Width(70);//Adding width to table
+                                    tableChoosenRecipe.Border(TableBorder.Horizontal);//Adding border style to table
 
-                                tableStep.AddRow($"Step {stepCounterr}: ", newIngredientStepsDescriptionVariable[g]);//
-                                stepCounterr++;
+                                    //To diplay user inputs
+                                    tableChoosenRecipe.AddRow("Ingredient Name: ", item.IngredientName);
+                                    tableChoosenRecipe.AddRow("Ingredient Quantity and Measureemt: ", item.IngredientQuantity + " " + item.IngredientUnitMeasurement);
+                                    tableChoosenRecipe.AddRow("Calories ", item.IngredientCalories + "");
+                                    tableChoosenRecipe.AddRow("Food Group", item.IngredientFoodGroup);
+                                    tableChoosenRecipe.AddRow("");
 
-                                //Table style
-                                tableStep.BorderColor(color: Color.DarkRed);//color to the border
-                                tableStep.Width(50);//Setting width size of the table
-                                tableStep.Border(TableBorder.Horizontal);//Setting the border style
-                    
-                                AnsiConsole.Write(choosenRecipe);//Display to the console
-                                AnsiConsole.Write(tableStep);//Display to the console
+
+                                    int counterStep = 1;//To count steps
+                                    //foreach loop to loop through the collection 
+                                    foreach (Steps showSteps in recipeFind.StepsClass)
+                                    {
+                                        tableChoosenRecipe.AddRow($"Step {counterStep}: ", showSteps.IngredientStepsDescription.ToUpper());//Adding row to diplay steps
+                                        counterStep++;
+                                    }
+
+                                    AnsiConsole.Write(tableChoosenRecipe);//Display table to console
+                                }
+
                             }
-                            
+                            else
+                            {
+                                Console.WriteLine("Recipe not recorded!!!");//If recipe is not recorded
+                            }
 
-                        }//for loop [E]                  
+                        }
+
                         break;
                 }//Switch case [E]
 
                 Console.WriteLine("\n");
 
                 Console.ForegroundColor = red;
-                Console.WriteLine("**************************************************\n");
+                Console.WriteLine("**********************************************************************\n");
                 Console.ResetColor();
 
                 Program.in_methodMenu();//Calls in_menu method
@@ -491,26 +507,35 @@ namespace ChaukeRecipeApp
                 throw;
             }//catch [E]
 
-                           
 
-        }
+
+        }//Diplay method [E]
         public static void scaleQuantities()
         {
             Console.WriteLine("\n");
 
             Console.ForegroundColor = red;
-            Console.WriteLine("**************************************************\n");
+            Console.WriteLine("**********************************************************************\n");
             Console.ResetColor();
 
+            var scaleTable = new Table();//
+
+            scaleTable.AddColumn(new TableColumn(header: "Do you want to scale the quantities"));//
+
             //Menu to prompt the user to scale quantities
-            Console.WriteLine("Do you want to scale the quantities \n" +
-                "1. YES \n" +
-                "2. NO \n");
+            scaleTable.AddRow("1. YES");
+            scaleTable.AddRow("2. NO");
+            scaleTable.BorderColor(color: Color.Chartreuse4);//
+            scaleTable.Width(70);//Setting table width
+            scaleTable.Border(TableBorder.Horizontal);//
+
+            AnsiConsole.Write(scaleTable);//
 
             int option = Convert.ToInt16(Console.ReadLine());//Read user input to option variable
 
+            Console.WriteLine("\n");
             Console.ForegroundColor = red;
-            Console.WriteLine("**************************************************\n");
+            Console.WriteLine("**********************************************************************\n");
             Console.ResetColor();
 
             if (option == 1)
@@ -525,10 +550,10 @@ namespace ChaukeRecipeApp
 
                 //Table style
                 scaleMenu.BorderColor(color: Color.DarkGoldenrod);//setting the border color
-                scaleMenu.Width(50);//setting table width
+                scaleMenu.Width(70);//setting table width
                 scaleMenu.Border(TableBorder.Horizontal);//setting table border
 
-                AnsiConsole.Write(scaleMenu);
+                AnsiConsole.Write(scaleMenu);//Diplays the table to console
 
                 int scaleOption = Convert.ToInt16(Console.ReadLine());//Reads the user input to scaleOption variable
 
@@ -539,21 +564,46 @@ namespace ChaukeRecipeApp
 
                 ingredientQuantityUpdate.BorderColor(color: Color.BlueViolet);//Adding color to table Border
 
-                ingredientQuantityUpdate.Width(50);//setting a width for the table
+                ingredientQuantityUpdate.Width(70);//setting a width for the table
 
                 ingredientQuantityUpdate.Border(TableBorder.Horizontal);//Setting the border style
 
                 String recipe = "Scale";
                 Console.ForegroundColor = red;
-                Console.WriteLine("*********************** " + recipe.ToUpper() + " *********************\n");
+                Console.WriteLine("******************************* " + recipe.ToUpper() + " *********************************\n");
                 Console.ResetColor();
+
+                foreach (Recipe recipeAvailable in recipeClassObject)
+                {//foreach loop [S]
+
+                    newRecipeNameVariable.Add(recipeAvailable.RecipeName);//Adding recipe
+
+                    //
+                    foreach (Ingredients addIngredients in recipeAvailable.IngredientsClass)
+                    {
+                        //
+                        newIngredientNameVariable.Add(addIngredients.IngredientName);
+                        newIngredientQuantityVariable.Add(addIngredients.IngredientQuantity);
+                        newIngredientUnitMeasurementVariable.Add(addIngredients.IngredientUnitMeasurement);
+                        newIngredientCaloriesVariable.Add(addIngredients.IngredientCalories);
+                        newIngredientFoodGroupVariable.Add(addIngredients.IngredientFoodGroup);
+
+                    }
+
+                    //
+                    foreach (Steps addSteps in recipeAvailable.StepsClass)
+                    {
+                        newIngredientStepsDescriptionVariable.Add(addSteps.IngredientStepsDescription);
+                    }
+
+                }//foreach loop [E]
 
 
                 if (scaleOption == 1)
                 {//if scaleOption 1 [S]
 
                     for (int b = 0; b < newIngredientQuantityVariable.Count; b++)
-                    {
+                    {//option for loop [S]
                         ingredientsUpdateClassObject.ScaleQuantity = newIngredientQuantityVariable[b] * 0.5;//ingredientQuantityArray will be scale by 0.5 using double data type 
 
 
@@ -567,14 +617,15 @@ namespace ChaukeRecipeApp
 
                                 ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + "" + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper());//Adding row for ingredientQuantity and ingredientUnitMeasurement
 
-                                AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+                                ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
+
+                                ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
+
+
                             }
-                            
-
-
                         }
-                        
-                        else if(newIngredientUnitMeasurementVariable[b].Contains("tablespoons") || newIngredientUnitMeasurementVariable[b].Contains("tablespoon"))
+
+                        else if (newIngredientUnitMeasurementVariable[b].Contains("tablespoons") || newIngredientUnitMeasurementVariable[b].Contains("tablespoon"))
                         {
                             if (ingredientsUpdateClassObject.ScaleQuantity >= 8)
                             {
@@ -584,24 +635,27 @@ namespace ChaukeRecipeApp
 
                                 ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper());//Adding row for ingredientQuantity and ingredientUnitMeasurement
 
+
                             }
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+
 
                         }
                         else
-                        {
+                        {//else 1st option [S]
 
                             ingredientQuantityUpdate.AddRow("Ingredient Name ", newIngredientNameVariable[b].ToUpper());//Adding row for ingredientNameArray
 
-                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", newIngredientQuantityVariable[b] + " " + newIngredientUnitMeasurementVariable[b].ToUpper());//Adding row for ingredientQuantity and ingredientUnitMeasurement 
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + newIngredientUnitMeasurementVariable[b].ToUpper());//Adding row for ingredientQuantity and ingredientUnitMeasurement 
 
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+                            AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
 
-                        }
+                        }//else 1st option [E]
 
-                        AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
 
-                    }
+
+                    }//option for loop [E]
+                    AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+                    Console.WriteLine("\n");
                     Program.in_methodMenu();//call to diplay menu
 
                 }//if scaleOption 1 [E]
@@ -621,25 +675,27 @@ namespace ChaukeRecipeApp
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", newIngredientNameVariable[o].ToUpper());//Adding row for ingredientNameArray
 
-                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement " + ingredientsUpdateClassObject.ScaleQuantity + "" + ingredientsUpdateClassObject.UnitMeasurementUpdate);//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                                ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + "" + ingredientsUpdateClassObject.UnitMeasurementUpdate);//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
-                                AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
+
 
                             }
 
-                        }else
+                        }
+                        else
                         {
 
                             ingredientQuantityUpdate.AddRow("Ingredient Name ", newIngredientNameVariable[o].ToUpper());//Adding row for ingredientNameArray
 
-                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", newIngredientQuantityVariable[o] + " " + newIngredientUnitMeasurementVariable[o]);//Adding row for ingredient quantity and unit measurement
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + newIngredientUnitMeasurementVariable[o]);//Adding row for ingredient quantity and unit measurement
 
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+
 
                         }
 
                     }
-                    
+                    AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+                    Console.WriteLine("\n");
                     Program.in_methodMenu();//Displays menu
 
                 }// if Scale Option 2 [E]
@@ -652,7 +708,7 @@ namespace ChaukeRecipeApp
                     {
                         ingredientsUpdateClassObject.ScaleQuantity = newIngredientQuantityVariable[n] * 3;//ingredientQuantityArray will be scale to 3 using int data type 
 
-                        if(ingredientsUpdateClassObject.ScaleQuantity > 1)//
+                        if (ingredientsUpdateClassObject.ScaleQuantity > 1)//
                         {
                             ingredientsUpdateClassObject.UnitMeasurementUpdate = " Cups";//
 
@@ -660,24 +716,17 @@ namespace ChaukeRecipeApp
 
                             ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
-
-
                         }
                         else
                         {
-
                             ingredientQuantityUpdate.AddRow("Ingredient Name ", newIngredientNameVariable[n].ToUpper());//Adding row for ingredientNameArray
 
-                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", newIngredientQuantityVariable[n] + " " + newIngredientUnitMeasurementVariable[n] + "\n");//Adding row for ingredient and unit measurement
-
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + newIngredientUnitMeasurementVariable[n] + "\n");//Adding row for ingredient and unit measurement
 
                         }
-
-
                     }
-
+                    AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+                    Console.WriteLine("\n");
                     Program.in_methodMenu();//Displays menu
 
                 }//scaleOption 3 [E]
@@ -690,9 +739,6 @@ namespace ChaukeRecipeApp
 
             }
 
-
-
-
         }
         //A method to clear the data
         public static void clearRecipeData()
@@ -700,17 +746,28 @@ namespace ChaukeRecipeApp
             //Prompt user to clear 
             var clearTable = new Table();//Declaring the an instance of a table class in spectre class for ingredient
 
-            Console.WriteLine("Confirm : Are you sure ??!! \n" +
-               "1.Yes\n" +
-               "2.No\n");//prompts the user
+            var confirmation = new Table();
+
+            //Prompts the user 
+            confirmation.AddColumn(new TableColumn(header: "Confirm : Are you sure ??!!"));//
+            confirmation.AddRow("1.Yes");
+            confirmation.AddRow("2.No");
+
+            //Table Style
+            confirmation.BorderColor(color: Color.LightSlateGrey);//Adding color to table Border
+            confirmation.Width(70);//setting a width for the table
+            confirmation.Border(TableBorder.Horizontal);//Setting the border style
+            AnsiConsole.Write(confirmation);//Diplays the console
 
             int confirm = Convert.ToInt16(Console.ReadLine());//user input save in the variable
+
+            Console.WriteLine("\n");
 
             if (confirm == 1)
             {//if confirm [S]
                 Console.WriteLine("\n");
 
-                 
+
 
                 for (int i = 0; i < newIngredientNameVariable.Count; i++)
                 {
@@ -719,20 +776,18 @@ namespace ChaukeRecipeApp
                     clearTable.AddColumn(new TableColumn(header: "Ingredients "));//A header for ingredients
 
                     clearTable.BorderColor(color: Color.DarkRed);//Adding color to table Border
-
-                    clearTable.Width(60);//setting a width for the table
-
+                    clearTable.Width(70);//setting a width for the table
                     clearTable.Border(TableBorder.Horizontal);//Setting the border style
 
                     foreach (Recipe clear in recipeClassObject)
                     {
                         newRecipeNameVariable.Clear();
                         recipeClassObject.Clear();
-                       
+
 
                     }
 
-                    foreach(Ingredients clear in ingredientsClassObject)
+                    foreach (Ingredients clear in ingredientsClassObject)
                     {
                         ingredientsClassObject.Clear();
                     }
@@ -752,15 +807,23 @@ namespace ChaukeRecipeApp
                 }
                 AnsiConsole.Write(clearTable);//Display the table
 
-                Console.WriteLine("\n");         
+                Console.WriteLine("\n");
 
-                //Prompts the user
-                Console.WriteLine("Recipe Cleared : Enter a new recipe\n" +
-                    "1. Yes \n" +
-                    "2. No\n");
+                var newRecipe = new Table();// 
+
+                newRecipe.AddColumn(new TableColumn(header: "Recipe Cleared: Enter a new recipe "));
+                newRecipe.AddRow("1. Yes");
+                newRecipe.AddRow("2. No");
+
+                newRecipe.BorderColor(color: Color.DarkSeaGreen1);//Adding color to table Border
+                newRecipe.Width(70);//setting a width for the table
+                newRecipe.Border(TableBorder.Horizontal);//Setting the border style
+                AnsiConsole.Write(newRecipe);//Displays to console
+
                 int enterNewRecipe = int.Parse(Console.ReadLine());//reads the user input to the variable
+                Console.WriteLine("\n");
 
-                switch(enterNewRecipe)
+                switch (enterNewRecipe)
                 {
                     case 1:
                         captureRecipe();//Call the method can enter a new recipe
@@ -785,24 +848,32 @@ namespace ChaukeRecipeApp
 
         //A method to reset the values 
         public static void resetQuantities()
-        {
+        {//reset Quantities [S]
+            var confirmation = new Table();//Declaring the an instance of a table class in spectre class
 
             //Prompts the user 
-            Console.WriteLine("Reset the quantities :\n" +
-                "1. Yes \n" +
-                "2. No\n");
+            confirmation.AddColumn(new TableColumn(header: "Reset the quantities : Are you sure ??!!"));//
+            confirmation.AddRow("1.Yes");
+            confirmation.AddRow("2.No");
+
+            //Table Style
+            confirmation.BorderColor(color: Color.LightSlateGrey);//Adding color to table Border
+            confirmation.Width(70);//setting a width for the table
+            confirmation.Border(TableBorder.Horizontal);//Setting the border style
+            AnsiConsole.Write(confirmation);//Diplays the console
+
 
             int reset = int.Parse(Console.ReadLine());//Read user input
 
-            var resetTable = new Table();//Declaring the an instance of a table class in spectre class for ingredient
+            Console.WriteLine("\n");
 
+            var resetTable = new Table();//Declaring the an instance of a table class in spectre class 
             resetTable.AddColumn(new TableColumn(header: "Ingredients "));//A header for ingredients 
             resetTable.AddColumn(new TableColumn(header: "Recipe "));//A header Recipe
 
-            resetTable.BorderColor(color: Color.BlueViolet);//Adding color to table Border
-
-            resetTable.Width(50);//setting a width for the table
-
+            //Table style
+            resetTable.BorderColor(color: Color.Magenta1);//Adding color to table Border
+            resetTable.Width(70);//setting a width for the table
             resetTable.Border(TableBorder.Horizontal);//Setting the border style
 
 
@@ -811,44 +882,80 @@ namespace ChaukeRecipeApp
                 case 1:
                     //Reset the quantities
 
+                    foreach (Recipe recipeAvailable in recipeClassObject)
+                    {//foreach loop [S]
+
+                        newRecipeNameVariable.Add(recipeAvailable.RecipeName);//Adding recipe
+
+                        //
+                        foreach (Ingredients addIngredients in recipeAvailable.IngredientsClass)
+                        {
+                            //
+                            newIngredientNameVariable.Add(addIngredients.IngredientName);
+                            newIngredientQuantityVariable.Add(addIngredients.IngredientQuantity);
+                            newIngredientUnitMeasurementVariable.Add(addIngredients.IngredientUnitMeasurement);
+                            newIngredientCaloriesVariable.Add(addIngredients.IngredientCalories);
+                            newIngredientFoodGroupVariable.Add(addIngredients.IngredientFoodGroup);
+
+                        }
+
+                        //
+                        foreach (Steps addSteps in recipeAvailable.StepsClass)
+                        {
+                            newIngredientStepsDescriptionVariable.Add(addSteps.IngredientStepsDescription);
+                        }
+
+                    }//foreach loop [E]
+
                     //for loop to search the loop
                     for (int a = 0; a < newIngredientQuantityVariable.Count; a++)
                     {
 
-                        if (ingredientsUpdateClassObject.ScaleQuantity == newIngredientQuantityVariable[a])//reseting the double object to original quantities
-                        {
-                            ingredientsUpdateClassObject.ScaleQuantity = newIngredientQuantityVariable[a];//reseting scaleQuantity property to newIngredientQuantityVariable original user input
+                        ingredientsUpdateClassObject.ScaleQuantity = newIngredientQuantityVariable[a];//reseting scaleQuantity property to newIngredientQuantityVariable original user input
 
-                            ingredientsUpdateClassObject.UnitMeasurementUpdate = newIngredientUnitMeasurementVariable[a];//reseting the UnitMeasurementUpdate property to newIngredientUnitMeasurementVariable
+                        ingredientsUpdateClassObject.UnitMeasurementUpdate = newIngredientUnitMeasurementVariable[a];//reseting the UnitMeasurementUpdate property to newIngredientUnitMeasurementVariable
 
-                            resetTable.AddRow("Ingredient Name ", newIngredientNameVariable[a].ToUpper());//Adding row for ingredientNameArray
+                        resetTable.AddRow("Ingredient Name ", newIngredientNameVariable[a].ToUpper());//Adding row for ingredientNameArray
 
-                            resetTable.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
-                            
-                        }
-                        
-                        AnsiConsole.Write(resetTable);//Displays to the console
-
+                        resetTable.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
                     }
-
+                    AnsiConsole.Write(resetTable);//Displays to the console
+                    Console.WriteLine("\n");
                     Program.in_methodMenu();//Displays menu
                     break;
-                    
+
 
                 case 2:
                     //Call the menu
-                    
+
                     Program.in_methodMenu();//Displays menu
 
                     break;
 
             }
 
-           
-            
 
-        }
+
+
+        }//reset Quantities
+
+        public int calculateTotalCalories()
+        {//calculate calories [S]
+
+            int totalCalories = 0;
+
+            foreach (Ingredients caloriesTotal in ingredientsClassObject)
+            {
+                totalCalories += caloriesTotal.IngredientCalories;
+                totalCalories = ingredientsClassObject.Sum(x => Convert.ToInt32(x));
+
+            }
+
+            return totalCalories;
+
+
+        }//calculate calories [E]
     }
 }
 

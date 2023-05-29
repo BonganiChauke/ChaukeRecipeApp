@@ -86,36 +86,5 @@ namespace ChaukeRecipeApp
             return $"Ingredient Name: {IngredientName} Ingredient Quantity: {IngredientQuantity} Ingredient Unit Measurement: {IngredientUnitMeasurement} Ingredient Calories: {IngredientCalories} Ingredient Food Group: {IngredientFoodGroup}";
         }
 
-        /*
-         
-          //
-                                choosenRecipe.AddColumn(new TableColumn(header: newRecipeNameVariable[g]));
-                                choosenRecipe.AddColumn(new TableColumn(header: "Ingredients"));
-
-                                //
-                                choosenRecipe.AddRow("Ingredient Name ", newIngredientNameVariable[g]);
-                                choosenRecipe.AddRow("Ingredient Quantity and Unit Measurement ", newIngredientQuantityVariable[g] + "" + newIngredientUnitMeasurementVariable[g]);
-                                choosenRecipe.AddRow("Ingredient Calories " + newIngredientCaloriesVariable[g]);
-                                choosenRecipe.AddRow("Ingredient Food Group ", newIngredientFoodGroupVariable[g]);
-
-                                //Table style
-                                choosenRecipe.BorderColor(color: Color.Cornsilk1);//color to the border
-                                choosenRecipe.Width(50);//Setting width size of the table
-                                choosenRecipe.Border(TableBorder.Horizontal);//Setting the border style
-
-                                tableStep.AddRow($"Step {stepCounterr}: ", newIngredientStepsDescriptionVariable[g]);//
-                                stepCounterr++;
-
-                                //Table style
-                                tableStep.BorderColor(color: Color.DarkRed);//color to the border
-                                tableStep.Width(50);//Setting width size of the table
-                                tableStep.Border(TableBorder.Horizontal);//Setting the border style
-                    
-                                AnsiConsole.Write(choosenRecipe);//Display to the console
-                                AnsiConsole.Write(tableStep);//Display to the console
-         
-         
-         */
-
     }
 }

@@ -48,30 +48,5 @@ namespace ChaukeRecipeApp
             return $"Recipe Name: {RecipeName}";
         }
 
-        /*  
-         
-         int recipeCouter = 1;
-
-                        var recipes = new Table();//
-
-                        recipes.AddColumn(new TableColumn(header: "Recipes Recorded"));//
-         
-        recipes.AddRow($"Recipe {recipeCouter}: ", recipeAvailable.RecipeName + " ");
-                            recipeCouter++;
-                            recipes.BorderColor(color: Color.DarkTurquoise);//color to the border
-                            recipes.Width(50);//Setting width size of the table
-                            recipes.Border(TableBorder.Horizontal);//Setting the border style
-         
-         
-         
-         
-         
-         
-         
-         
-         */
-
-
-
     }
 }

@@ -15,6 +15,12 @@ namespace ChaukeRecipeApp
 {
     internal class RecipeMethods
     {
+        //Declaring a delegate to warm the user 
+        public delegate int warningCalories();
+
+        //Declaring a object reference to link the delegate to calculate calories
+        static warningCalories warnUser = RecipeMethods.calculateTotalCalories;
+
         //Declaring Object reference for Recipe Class to get the attributes
         static List<Recipe> recipeClassObject = new List<Recipe>();
 
@@ -148,6 +154,9 @@ namespace ChaukeRecipeApp
 
                         Console.WriteLine($"Enter number of calories for: {ingredientName} ingredient ");//Prompts user for number of calories
                         ingredientCalories = Convert.ToInt32(Console.ReadLine());//Reads user input into ingredientCalories
+
+                        //
+                        Console.WriteLine(warnUser);
 
                         Console.WriteLine("\n");
 
@@ -635,7 +644,9 @@ namespace ChaukeRecipeApp
 
                                 ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper());//Adding row for ingredientQuantity and ingredientUnitMeasurement
 
+                                ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
 
+                                ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
                             }
 
 
@@ -646,6 +657,10 @@ namespace ChaukeRecipeApp
                             ingredientQuantityUpdate.AddRow("Ingredient Name ", newIngredientNameVariable[b].ToUpper());//Adding row for ingredientNameArray
 
                             ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + newIngredientUnitMeasurementVariable[b].ToUpper());//Adding row for ingredientQuantity and ingredientUnitMeasurement 
+
+                            ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
+
+                            ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
 
                             AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
 
@@ -677,6 +692,9 @@ namespace ChaukeRecipeApp
 
                                 ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + "" + ingredientsUpdateClassObject.UnitMeasurementUpdate);//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
+                                ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
+
+                                ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
 
 
                             }
@@ -689,7 +707,9 @@ namespace ChaukeRecipeApp
 
                             ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + newIngredientUnitMeasurementVariable[o]);//Adding row for ingredient quantity and unit measurement
 
+                            ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
 
+                            ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
 
                         }
 
@@ -716,6 +736,11 @@ namespace ChaukeRecipeApp
 
                             ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
+                            ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
+
+                            ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
+
+                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
                         }
                         else
                         {
@@ -723,6 +748,11 @@ namespace ChaukeRecipeApp
 
                             ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + newIngredientUnitMeasurementVariable[n] + "\n");//Adding row for ingredient and unit measurement
 
+                            ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
+
+                            ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
+
+                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
                         }
                     }
                     AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
@@ -763,49 +793,81 @@ namespace ChaukeRecipeApp
 
             Console.WriteLine("\n");
 
+
+
+
             if (confirm == 1)
             {//if confirm [S]
+
                 Console.WriteLine("\n");
 
+                foreach (Recipe recipeAvailable in recipeClassObject)
+                {//foreach loop [S]
+
+                    newRecipeNameVariable.Add(recipeAvailable.RecipeName);//Adding recipe
+
+                    //
+                    foreach (Ingredients addIngredients in recipeAvailable.IngredientsClass)
+                    {
+                        //
+                        newIngredientNameVariable.Add(addIngredients.IngredientName);
+                        newIngredientQuantityVariable.Add(addIngredients.IngredientQuantity);
+                        newIngredientUnitMeasurementVariable.Add(addIngredients.IngredientUnitMeasurement);
+                        newIngredientCaloriesVariable.Add(addIngredients.IngredientCalories);
+                        newIngredientFoodGroupVariable.Add(addIngredients.IngredientFoodGroup);
+
+                    }
+
+                    //
+                    foreach (Steps addSteps in recipeAvailable.StepsClass)
+                    {
+                        newIngredientStepsDescriptionVariable.Add(addSteps.IngredientStepsDescription);
+                    }
+
+                }//foreach loop [E]
 
 
-                for (int i = 0; i < newIngredientNameVariable.Count; i++)
+                clearTable.AddColumn(new TableColumn(header: "re"));//A header for recipe Name 
+                clearTable.AddColumn(new TableColumn(header: "Ingredients "));//A header for ingredients
+
+                clearTable.BorderColor(color: Color.DarkRed);//Adding color to table Border
+                clearTable.Width(70);//setting a width for the table
+                clearTable.Border(TableBorder.Horizontal);//Setting the border style
+
+                foreach (Recipe clear in recipeClassObject)
                 {
+                    //clear.RecipeName(recipeClassObject.Clear());
+                    //recipeClassObject.Clear(clear.RecipeName);
 
-                    clearTable.AddColumn(new TableColumn(header: newRecipeNameVariable[i]));//A header for recipe Name 
-                    clearTable.AddColumn(new TableColumn(header: "Ingredients "));//A header for ingredients
-
-                    clearTable.BorderColor(color: Color.DarkRed);//Adding color to table Border
-                    clearTable.Width(70);//setting a width for the table
-                    clearTable.Border(TableBorder.Horizontal);//Setting the border style
-
-                    foreach (Recipe clear in recipeClassObject)
+                    foreach (Ingredients clearIngredient in clear.IngredientsClass)
                     {
-                        newRecipeNameVariable.Clear();
-                        recipeClassObject.Clear();
+                        //ingredientsClassObject.Clear();
+
+
+
+                        newIngredientNameVariable.Clear();
+
+                        for (int i = 0; i < newIngredientNameVariable.Count; i++)
+                        {
+                            clearTable.AddRow("Ingredient Name ", newIngredientNameVariable[i]);//Diplays the cleared input
+                            //clearTable.AddRow("Quantity  ", clearIngredient.IngredientQuantity + "");//Diplays the cleared input
+                            //clearTable.AddRow("Unit Measurement ", clearIngredient.IngredientUnitMeasurement);//Diplays the cleared input
+
+                        }
+
+                        
+
 
 
                     }
-
-                    foreach (Ingredients clear in ingredientsClassObject)
-                    {
-                        ingredientsClassObject.Clear();
-                    }
-
-                    foreach (Steps clear in stepsClassObject)
+                    foreach (Steps stepsClear in stepsClassObject)
                     {
                         stepsClassObject.Clear();
 
                     }
-
-                    clearTable.AddRow("Ingredient Name : " + newIngredientNameVariable[i]);//Diplays the cleared input
-                    clearTable.AddRow("Quantity : " + newIngredientQuantityVariable[i]);//Diplays the cleared input
-                    clearTable.AddRow("Unit Measurement: " + newIngredientUnitMeasurementVariable[i]);//Diplays the cleared input
-
-
+                    AnsiConsole.Write(clearTable);//Display the table
 
                 }
-                AnsiConsole.Write(clearTable);//Display the table
 
                 Console.WriteLine("\n");
 
@@ -940,19 +1002,26 @@ namespace ChaukeRecipeApp
 
         }//reset Quantities
 
-        public int calculateTotalCalories()
+        public static int calculateTotalCalories()//Method to calculate the total calories in a single recipe
         {//calculate calories [S]
 
+            //Decalring the total value 
             int totalCalories = 0;
 
             foreach (Ingredients caloriesTotal in ingredientsClassObject)
             {
-                totalCalories += caloriesTotal.IngredientCalories;
+                //calculates the total in the recipe
                 totalCalories = ingredientsClassObject.Sum(x => Convert.ToInt32(x));
 
+                if (totalCalories > 300)//Checks the if totalCalories exceeds 300
+                {
+                    Console.WriteLine("This recipe has more than 300 coalories");//Warms the user
+                }
             }
 
-            return totalCalories;
+            
+
+            return totalCalories;//return int statement
 
 
         }//calculate calories [E]

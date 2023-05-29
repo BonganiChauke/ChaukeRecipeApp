@@ -346,6 +346,8 @@ namespace ChaukeRecipeApp
                         foreach (Recipe displayRecipeName in recipeClassObject)
                         {//1st foreach loop [S]
 
+                            
+
                             //nested foreach loops to loop through the items in the collections
                             foreach (Ingredients printIngredients in displayRecipeName.IngredientsClass)
                             {//Ingredient foreach loop [S]
@@ -359,6 +361,9 @@ namespace ChaukeRecipeApp
                                 ingredientTable.AddRow("Calories", printIngredients.IngredientCalories + "");//Adding row to diplay calories
                                 ingredientTable.AddRow("Food Group", printIngredients.IngredientFoodGroup.ToUpper());//Adding row to diplay food group
 
+
+
+
                                 //Table style
                                 ingredientTable.BorderColor(color: Color.BlueViolet);//Adding color to table Border
                                 ingredientTable.Width(70);//setting a width for the table
@@ -368,9 +373,14 @@ namespace ChaukeRecipeApp
 
                                 AnsiConsole.Write(ingredientTable);//Diplay table to console
 
+                                if (displayRecipeName.RecipeName == "" && printIngredients.IngredientName == "" && printIngredients.IngredientQuantity == 0 && printIngredients.IngredientUnitMeasurement == "" && printIngredients.IngredientCalories == 0 && printIngredients.IngredientFoodGroup == "")
+                                {
+                                    clearRecipeData();
+                                }
 
                             }//Ingredient foreach loop [E]
 
+                            
 
                             int stepCounter = 1;//To count each steps
                             var tableSteps = new Table();//Declaring the an instance of a table class in spectre class
@@ -389,7 +399,11 @@ namespace ChaukeRecipeApp
                                 tableSteps.Width(70);//Setting width size of the table
                                 tableSteps.Border(TableBorder.Horizontal);//Setting the border style
 
+
+
                             }
+
+                            
 
                             AnsiConsole.Write(tableSteps);//Display table to console
 

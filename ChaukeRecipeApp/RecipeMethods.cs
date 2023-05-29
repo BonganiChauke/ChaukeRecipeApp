@@ -804,6 +804,7 @@ namespace ChaukeRecipeApp
                 foreach (Recipe recipeAvailable in recipeClassObject)
                 {//foreach loop [S]
 
+
                     newRecipeNameVariable.Add(recipeAvailable.RecipeName);//Adding recipe
 
                     //
@@ -815,6 +816,17 @@ namespace ChaukeRecipeApp
                         newIngredientUnitMeasurementVariable.Add(addIngredients.IngredientUnitMeasurement);
                         newIngredientCaloriesVariable.Add(addIngredients.IngredientCalories);
                         newIngredientFoodGroupVariable.Add(addIngredients.IngredientFoodGroup);
+
+                        //
+                        for (int i = 0; i < newIngredientNameVariable.Count; i++)
+                        {
+                            newIngredientNameVariable.Clear();
+                            newIngredientQuantityVariable.Clear();
+                            newIngredientUnitMeasurementVariable.Clear();
+                            newIngredientCaloriesVariable.Clear();
+                            newIngredientFoodGroupVariable.Clear();
+
+                        }
 
                     }
 
@@ -834,40 +846,14 @@ namespace ChaukeRecipeApp
                 clearTable.Width(70);//setting a width for the table
                 clearTable.Border(TableBorder.Horizontal);//Setting the border style
 
-                foreach (Recipe clear in recipeClassObject)
-                {
-                    //clear.RecipeName(recipeClassObject.Clear());
-                    //recipeClassObject.Clear(clear.RecipeName);
+                
 
-                    foreach (Ingredients clearIngredient in clear.IngredientsClass)
-                    {
-                        //ingredientsClassObject.Clear();
+                //clearTable.AddRow("Ingredient Name ", newIngredientNameVariable[i]);//Diplays the cleared input
+                //clearTable.AddRow("Quantity  ", clearIngredient.IngredientQuantity + "");//Diplays the cleared input
+                //clearTable.AddRow("Unit Measurement ", clearIngredient.IngredientUnitMeasurement);//Diplays the cleared input
 
 
-
-                        newIngredientNameVariable.Clear();
-
-                        for (int i = 0; i < newIngredientNameVariable.Count; i++)
-                        {
-                            clearTable.AddRow("Ingredient Name ", newIngredientNameVariable[i]);//Diplays the cleared input
-                            //clearTable.AddRow("Quantity  ", clearIngredient.IngredientQuantity + "");//Diplays the cleared input
-                            //clearTable.AddRow("Unit Measurement ", clearIngredient.IngredientUnitMeasurement);//Diplays the cleared input
-
-                        }
-
-                        
-
-
-
-                    }
-                    foreach (Steps stepsClear in stepsClassObject)
-                    {
-                        stepsClassObject.Clear();
-
-                    }
-                    AnsiConsole.Write(clearTable);//Display the table
-
-                }
+                AnsiConsole.Write(clearTable);//Display the table
 
                 Console.WriteLine("\n");
 
@@ -1011,6 +997,7 @@ namespace ChaukeRecipeApp
             foreach (Ingredients caloriesTotal in ingredientsClassObject)
             {
                 //calculates the total in the recipe
+                totalCalories += caloriesTotal.IngredientCalories;
                 totalCalories = ingredientsClassObject.Sum(x => Convert.ToInt32(x));
 
                 if (totalCalories > 300)//Checks the if totalCalories exceeds 300

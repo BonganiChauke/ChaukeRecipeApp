@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChaukeRecipeApp
 {
-    internal class Steps
+    public class Steps
     {
         //Declaring properties variables
         private string ingredientStepsDescription;//field
@@ -21,6 +21,11 @@ namespace ChaukeRecipeApp
         public List<Ingredients> IngredientsClass
         {
             get;set;
+        }
+
+        public Steps()
+        {
+
         }
 
 

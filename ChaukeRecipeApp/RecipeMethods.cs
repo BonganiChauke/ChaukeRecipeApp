@@ -13,13 +13,16 @@ using Spectre.Console.Rendering;
 
 namespace ChaukeRecipeApp
 {
-    internal class RecipeMethods
+    public class RecipeMethods
     {
         //Declaring a delegate to warm the user 
         public delegate int warningCalories();
 
+        //
+        public static RecipeMethods objectClass = new RecipeMethods();
+
         //Declaring a object reference to link the delegate to calculate calories
-        static warningCalories warnUser = RecipeMethods.calculateTotalCalories;
+        public warningCalories warnUser = objectClass.calculateTotalCalories;
 
         //Declaring Object reference for Recipe Class to get the attributes
         static List<Recipe> recipeClassObject = new List<Recipe>();
@@ -155,8 +158,8 @@ namespace ChaukeRecipeApp
                         Console.WriteLine($"Enter number of calories for: {ingredientName} ingredient ");//Prompts user for number of calories
                         ingredientCalories = Convert.ToInt32(Console.ReadLine());//Reads user input into ingredientCalories
 
-                        //
-                        Console.WriteLine(warnUser);
+                        //Calling the delegate
+                        Console.WriteLine(objectClass.warnUser);
 
                         Console.WriteLine("\n");
 
@@ -493,7 +496,7 @@ namespace ChaukeRecipeApp
                             }
                             else
                             {
-                                Console.WriteLine("Recipe not recorded!!!");//If recipe is not recorded
+
                             }
 
                         }
@@ -686,7 +689,7 @@ namespace ChaukeRecipeApp
                             if (ingredientsUpdateClassObject.ScaleQuantity <= 8)
                             {
 
-                                ingredientsUpdateClassObject.UnitMeasurementUpdate = "1/2 Cup";//ingredientUnitMeasurementArray will have a new updated value
+                                ingredientsUpdateClassObject.UnitMeasurementUpdate = "1 Cup";//ingredientUnitMeasurementArray will have a new updated value
 
                                 ingredientQuantityUpdate.AddRow("Ingredient Name ", newIngredientNameVariable[o].ToUpper());//Adding row for ingredientNameArray
 
@@ -782,6 +785,7 @@ namespace ChaukeRecipeApp
             confirmation.AddColumn(new TableColumn(header: "Confirm : Are you sure ??!!"));//
             confirmation.AddRow("1.Yes");
             confirmation.AddRow("2.No");
+            
 
             //Table Style
             confirmation.BorderColor(color: Color.LightSlateGrey);//Adding color to table Border
@@ -801,39 +805,43 @@ namespace ChaukeRecipeApp
 
                 Console.WriteLine("\n");
 
-                foreach (Recipe recipeAvailable in recipeClassObject)
+                //for each to loop through
+                foreach (Recipe recipeAvailable in recipeClassObject.ToList())
                 {//foreach loop [S]
 
+                    recipeClassObject.Clear();//Clears the list
 
-                    newRecipeNameVariable.Add(recipeAvailable.RecipeName);//Adding recipe
-
-                    //
-                    foreach (Ingredients addIngredients in recipeAvailable.IngredientsClass)
+                    //Check if the values are too default values
+                    if (recipeAvailable.RecipeName == "")
                     {
-                        //
-                        newIngredientNameVariable.Add(addIngredients.IngredientName);
-                        newIngredientQuantityVariable.Add(addIngredients.IngredientQuantity);
-                        newIngredientUnitMeasurementVariable.Add(addIngredients.IngredientUnitMeasurement);
-                        newIngredientCaloriesVariable.Add(addIngredients.IngredientCalories);
-                        newIngredientFoodGroupVariable.Add(addIngredients.IngredientFoodGroup);
-
-                        //
-                        for (int i = 0; i < newIngredientNameVariable.Count; i++)
-                        {
-                            newIngredientNameVariable.Clear();
-                            newIngredientQuantityVariable.Clear();
-                            newIngredientUnitMeasurementVariable.Clear();
-                            newIngredientCaloriesVariable.Clear();
-                            newIngredientFoodGroupVariable.Clear();
-
-                        }
-
+                        Console.WriteLine("Recipe Cleared");//Alerts user
                     }
 
-                    //
-                    foreach (Steps addSteps in recipeAvailable.StepsClass)
+                    //for each to loop through 
+                    foreach (Ingredients addIngredients in ingredientsClassObject.ToList())
                     {
-                        newIngredientStepsDescriptionVariable.Add(addSteps.IngredientStepsDescription);
+                        ingredientsClassObject.Remove(addIngredients);//Clears the list
+
+                        //Check if the values are too default values
+                        if (addIngredients.IngredientName == "" && addIngredients.IngredientQuantity == 0 && addIngredients.IngredientUnitMeasurement == "" && addIngredients.IngredientCalories == 0 && addIngredients.IngredientFoodGroup == "")
+                        {
+
+                            Console.WriteLine("All Ingredients cleared");//Alerts user
+                            
+                        }
+                        
+                    }
+
+                    //for each to loop through
+                    foreach (Steps addSteps in stepsClassObject.ToList())
+                    {
+                        
+                        stepsClassObject.Clear();//Clears the list
+
+                        if (addSteps.IngredientStepsDescription == "")
+                        {
+                            Console.WriteLine("All Steps cleared");//Alerts the user
+                        }
                     }
 
                 }//foreach loop [E]
@@ -988,7 +996,7 @@ namespace ChaukeRecipeApp
 
         }//reset Quantities
 
-        public static int calculateTotalCalories()//Method to calculate the total calories in a single recipe
+        public int calculateTotalCalories()//Method to calculate the total calories in a single recipe
         {//calculate calories [S]
 
             //Decalring the total value 
@@ -998,7 +1006,7 @@ namespace ChaukeRecipeApp
             {
                 //calculates the total in the recipe
                 totalCalories += caloriesTotal.IngredientCalories;
-                totalCalories = ingredientsClassObject.Sum(x => Convert.ToInt32(x));
+                //totalCalories = ingredientsClassObject.Sum(x => Convert.ToInt32(x));
 
                 if (totalCalories > 300)//Checks the if totalCalories exceeds 300
                 {

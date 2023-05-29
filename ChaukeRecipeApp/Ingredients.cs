@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChaukeRecipeApp
 {
-    internal class Ingredients
+    public class Ingredients
     {
         //Declaring properties variables 
         private string ingredientName;//field
@@ -78,7 +78,10 @@ namespace ChaukeRecipeApp
             IngredientCalories = ingredientCalories;
             IngredientFoodGroup = ingredientFoodGroup;
         }
-
+        public Ingredients()
+        {
+            IngredientCalories = ingredientCalories;
+        }
         //Override the constructor with the values
 
         public override string ToString()

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChaukeRecipeApp
 {
-    internal class Recipe
+    public class Recipe
     {
         //Declaring Properties Variables as private for recipe
 
@@ -20,7 +20,7 @@ namespace ChaukeRecipeApp
         }
 
         //Declaring a class Steps as a list
-        public List<Steps> StepsClass
+        public  List<Steps> StepsClass
         {
             get;set;
         }
@@ -39,6 +39,11 @@ namespace ChaukeRecipeApp
             RecipeName = recipeName;
             IngredientsClass = new List<Ingredients>();
             StepsClass = new List<Steps>();
+        }
+
+        public Recipe()
+        {
+
         }
 
         //Override constructor with the values 

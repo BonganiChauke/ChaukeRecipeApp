@@ -18,11 +18,17 @@ namespace ChaukeRecipeApp
         //Declaring a delegate to warm the user 
         public delegate int warningCalories();
 
+        public delegate void RecipeCalorieLimitHandler(string recipeName, int totalCalories);
+
+        public static Recipe recipeClass = new Recipe();
+
+        public RecipeCalorieLimitHandler RecipeCalorieLimitNotifier;
+
         //
         public static RecipeMethods objectClass = new RecipeMethods();
 
         //Declaring a object reference to link the delegate to calculate calories
-        public warningCalories warnUser = objectClass.calculateTotalCalories;
+        //public warningCalories warnUser = objectClass.calculateTotalCalories;
 
         //Declaring Object reference for Recipe Class to get the attributes
         static List<Recipe> recipeClassObject = new List<Recipe>();
@@ -158,15 +164,23 @@ namespace ChaukeRecipeApp
                         Console.WriteLine($"Enter number of calories for: {ingredientName} ingredient ");//Prompts user for number of calories
                         ingredientCalories = Convert.ToInt32(Console.ReadLine());//Reads user input into ingredientCalories
 
+                        //int totalCalories = recipeClass.calculateTotalCalories();
+
+                        //if (totalCalories > 300)//Checks the if totalCalories exceeds 300
+                        //{
+                        //    //RecipeCalorieLimitNotifier?.Invoke(totalCalories);
+                        //    Console.WriteLine("This recipe has more than 300 coalories");//Warms the user
+                        //}
+
                         //Calling the delegate
-                        Console.WriteLine(objectClass.warnUser);
+                        //Console.WriteLine(objectClass.warnUser);
 
                         Console.WriteLine("\n");
 
                         var foodGroup = new Table();//Declaring the an instance of a table class in spectre class
 
                         //Prompts user for a food group with options to select
-                        foodGroup.AddColumn("Select a choice ");
+                        foodGroup.AddColumn($"Choose Food Group for: {ingredientName} Ingredient");
                         foodGroup.AddRow("1. Starchy Foods");
                         foodGroup.AddRow("2. Vegetable and Fruit");
                         foodGroup.AddRow("3. Dry Beans, Peas, Lentils, and Soya");
@@ -324,6 +338,7 @@ namespace ChaukeRecipeApp
                 chooseDisplayTable.AddColumn("Select an option");//Prompts the user
                 chooseDisplayTable.AddRow("1. Show all recipes");
                 chooseDisplayTable.AddRow("2. Choose a recicpe");
+                chooseDisplayTable.AddRow("3. Back to menu");
 
                 //Table style
 
@@ -346,16 +361,16 @@ namespace ChaukeRecipeApp
                         foreach (Recipe displayRecipeName in recipeClassObject)
                         {//1st foreach loop [S]
 
-                            
+                            var ingredientTable = new Table();//Declaring the an instance of a table class in spectre class
+
 
                             //nested foreach loops to loop through the items in the collections
                             foreach (Ingredients printIngredients in displayRecipeName.IngredientsClass)
                             {//Ingredient foreach loop [S]
 
-                                var ingredientTable = new Table();//Declaring the an instance of a table class in spectre class
 
                                 ingredientTable.AddColumn(new TableColumn(header: $"{displayRecipeName.RecipeName.ToUpper()} Recipe"));//Header displays recipe name
-                                ingredientTable.AddColumn(new TableColumn(header: "Ingredients"));//Header for ingredients
+                                ingredientTable.AddColumn(new TableColumn(header: ""));//Header for ingredients
                                 ingredientTable.AddRow("Ingredient Name", printIngredients.IngredientName.ToUpper());//Adding row to diplay ingredient name
                                 ingredientTable.AddRow("Quantity and Measurement", printIngredients.IngredientQuantity + " " + printIngredients.IngredientUnitMeasurement.ToUpper());//Adding row to diplay quantity and unit measurement
                                 ingredientTable.AddRow("Calories", printIngredients.IngredientCalories + "");//Adding row to diplay calories
@@ -371,7 +386,7 @@ namespace ChaukeRecipeApp
 
                                 Console.WriteLine("\n");
 
-                                AnsiConsole.Write(ingredientTable);//Diplay table to console
+                                
 
                                 if (displayRecipeName.RecipeName == "" && printIngredients.IngredientName == "" && printIngredients.IngredientQuantity == 0 && printIngredients.IngredientUnitMeasurement == "" && printIngredients.IngredientCalories == 0 && printIngredients.IngredientFoodGroup == "")
                                 {
@@ -403,8 +418,8 @@ namespace ChaukeRecipeApp
 
                             }
 
-                            
 
+                            AnsiConsole.Write(ingredientTable);//Diplay table to console
                             AnsiConsole.Write(tableSteps);//Display table to console
 
                         }//1st foreach loop [E]
@@ -416,14 +431,14 @@ namespace ChaukeRecipeApp
                         Console.WriteLine("\n");
 
                         var availableRecipes = new Table();//Declaring the an instance of a table class in spectre class
-                        availableRecipes.AddColumn(new TableColumn(header: "  Recipes saved"));//Header for recipes saved
+                        availableRecipes.AddColumn(new TableColumn(header: "Recipes saved"));//Header for recipes saved
 
                         //nested foreach loops to loop through the collection and add to new variable that will used in for loops
                         foreach (Recipe recipeAvailable in recipeClassObject)
                         {//foreach loop [S]
 
                             newRecipeNameVariable.Add(recipeAvailable.RecipeName);//Adding recipe
-                            availableRecipes.AddRow(recipeAvailable.RecipeName + " Recipe ");
+                            availableRecipes.AddRow(recipeAvailable.RecipeName);
                             //Table style
                             availableRecipes.BorderColor(color: Color.DarkMagenta);//Adding color to table
                             availableRecipes.Width(70);//Adding width to table
@@ -470,7 +485,7 @@ namespace ChaukeRecipeApp
 
                         //Find function to serach through the elements that finds matching values and return corresponding values
                         Recipe recipeFind = recipeClassObject.Find(r => r.RecipeName == chooseRecipe);
-
+                        var tableChoosenRecipe = new Table();//Declaring the an instance of a table class in spectre class
                         for (int i = 0; i < newRecipeNameVariable.Count; i++)
                         {
                             if (chooseRecipe.Contains(newRecipeNameVariable[i]))//if user input matches the saved recipe
@@ -478,10 +493,9 @@ namespace ChaukeRecipeApp
                                 //foreach to loop through the collection
                                 foreach (Ingredients item in recipeFind.IngredientsClass)
                                 {
-                                    var tableChoosenRecipe = new Table();//Declaring the an instance of a table class in spectre class
-
+                                    
                                     tableChoosenRecipe.AddColumn(new TableColumn(header: recipeFind.RecipeName + " Recipe "));//Adding header for recipe name
-                                    tableChoosenRecipe.AddColumn(new TableColumn(header: "Ingredients"));//adding for ingredients name
+                                    tableChoosenRecipe.AddColumn(new TableColumn(header: ""));//adding for ingredients name
 
                                     //Table Style
                                     tableChoosenRecipe.BorderColor(color: Color.DarkRed);//Adding color to table
@@ -498,6 +512,7 @@ namespace ChaukeRecipeApp
 
                                     int counterStep = 1;//To count steps
                                     //foreach loop to loop through the collection 
+
                                     foreach (Steps showSteps in recipeFind.StepsClass)
                                     {
                                         tableChoosenRecipe.AddRow($"Step {counterStep}: ", showSteps.IngredientStepsDescription.ToUpper());//Adding row to diplay steps
@@ -505,7 +520,9 @@ namespace ChaukeRecipeApp
                                     }
 
                                     AnsiConsole.Write(tableChoosenRecipe);//Display table to console
+                                    break;
                                 }
+                                
 
                             }
                             else
@@ -516,6 +533,13 @@ namespace ChaukeRecipeApp
                         }
 
                         break;
+
+                    case 3:
+
+                        Program.in_methodMenu();
+
+                        break;
+
                 }//Switch case [E]
 
                 Console.WriteLine("\n");
@@ -573,6 +597,7 @@ namespace ChaukeRecipeApp
                 scaleMenu.AddRow("1. First Scale by: 0.5");
                 scaleMenu.AddRow("2. Second Scale by: 2");
                 scaleMenu.AddRow("3. Third Scale by: 3");
+                scaleMenu.AddRow("Back To Menu");
 
                 //Table style
                 scaleMenu.BorderColor(color: Color.DarkGoldenrod);//setting the border color
@@ -646,6 +671,7 @@ namespace ChaukeRecipeApp
                                 ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
 
                                 ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
+                                break;
 
 
                             }
@@ -664,6 +690,8 @@ namespace ChaukeRecipeApp
                                 ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
 
                                 ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
+
+                                break;
                             }
 
 
@@ -678,6 +706,8 @@ namespace ChaukeRecipeApp
                             ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
 
                             ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
+
+                            break;
 
                             AnsiConsole.Write(ingredientQuantityUpdate);//Display the quantity to console
 
@@ -713,7 +743,7 @@ namespace ChaukeRecipeApp
 
                                 ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
 
-
+                                break;
                             }
 
                         }
@@ -728,6 +758,7 @@ namespace ChaukeRecipeApp
 
                             ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
 
+                            break;
                         }
 
                     }
@@ -747,29 +778,30 @@ namespace ChaukeRecipeApp
 
                         if (ingredientsUpdateClassObject.ScaleQuantity > 1)//
                         {
-                            ingredientsUpdateClassObject.UnitMeasurementUpdate = " Cups";//
+                            //ingredientsUpdateClassObject.UnitMeasurementUpdate = " Cups";//
 
                             ingredientQuantityUpdate.AddRow("Ingredient Name ", newIngredientNameVariable[n].ToUpper());//Adding row for ingredientNameArray
 
-                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientUnitMeasurement.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
 
                             ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
 
                             ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
+                            break;
 
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+                            
                         }
                         else
                         {
                             ingredientQuantityUpdate.AddRow("Ingredient Name ", newIngredientNameVariable[n].ToUpper());//Adding row for ingredientNameArray
 
-                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + newIngredientUnitMeasurementVariable[n] + "\n");//Adding row for ingredient and unit measurement
+                            ingredientQuantityUpdate.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientUnitMeasurement + "\n");//Adding row for ingredient and unit measurement
 
                             ingredientQuantityUpdate.AddRow("Calories ", ingredientCalories + "");
 
                             ingredientQuantityUpdate.AddRow("Food Gruop ", ingredientFoodGroup);
 
-                            AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
+                            break;
                         }
                     }
                     AnsiConsole.Write(ingredientQuantityUpdate);//Diplay table to console
@@ -988,7 +1020,7 @@ namespace ChaukeRecipeApp
                         resetTable.AddRow("Ingredient Name ", newIngredientNameVariable[a].ToUpper());//Adding row for ingredientNameArray
 
                         resetTable.AddRow("Quantity and Unit Measurement ", ingredientsUpdateClassObject.ScaleQuantity + " " + ingredientsUpdateClassObject.UnitMeasurementUpdate.ToUpper() + "\n");//Adding row for ingredientQuantityArray and ingredientUnitMeasurementArray
-
+                        break;
                     }
                     AnsiConsole.Write(resetTable);//Displays to the console
                     Console.WriteLine("\n");
@@ -1010,30 +1042,7 @@ namespace ChaukeRecipeApp
 
         }//reset Quantities
 
-        public int calculateTotalCalories()//Method to calculate the total calories in a single recipe
-        {//calculate calories [S]
-
-            //Decalring the total value 
-            int totalCalories = 0;
-
-            foreach (Ingredients caloriesTotal in ingredientsClassObject)
-            {
-                //calculates the total in the recipe
-                totalCalories += caloriesTotal.IngredientCalories;
-                //totalCalories = ingredientsClassObject.Sum(x => Convert.ToInt32(x));
-
-                if (totalCalories > 300)//Checks the if totalCalories exceeds 300
-                {
-                    Console.WriteLine("This recipe has more than 300 coalories");//Warms the user
-                }
-            }
-
-            
-
-            return totalCalories;//return int statement
-
-
-        }//calculate calories [E]
+        
     }
 }
 

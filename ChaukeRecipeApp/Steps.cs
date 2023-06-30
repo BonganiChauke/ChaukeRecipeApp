@@ -23,10 +23,7 @@ namespace ChaukeRecipeApp
             get;set;
         }
 
-        public Steps()
-        {
-
-        }
+        public Steps(){}
 
 
         //Overloaded Constructor for setting values to the  attributes

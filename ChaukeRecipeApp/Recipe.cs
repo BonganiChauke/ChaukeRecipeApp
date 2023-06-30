@@ -32,6 +32,8 @@ namespace ChaukeRecipeApp
             get;set;
         }
 
+
+        public Recipe(){}
         //Overloaded Constructor for setting values to the  attributes
 
         public Recipe(string recipeName)
@@ -41,13 +43,7 @@ namespace ChaukeRecipeApp
             StepsClass = new List<Steps>();
         }
 
-        public Recipe()
-        {
-
-        }
-
         //Override constructor with the values 
-
         public override string ToString()
         {
             return $"Recipe Name: {RecipeName}";

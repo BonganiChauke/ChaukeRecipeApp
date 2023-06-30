@@ -12,6 +12,9 @@ namespace ChaukeRecipeApp
     {
         //color to style the program
         static ConsoleColor red = ConsoleColor.Red;
+        public static Recipe recipeClassObject = new Recipe();
+
+        
 
         //main to execute the program
         static void Main(string[] args)
@@ -159,6 +162,11 @@ namespace ChaukeRecipeApp
             Console.WriteLine("**********************************************************************\n");
             Console.ResetColor();
 
+        }
+
+        static void RecipeCalorieLimitNotification(string recipeName, int totalCalories)
+        {
+            Console.WriteLine("Warning: The total calories of recipe '" + recipeName + "' exceed 300! (Total calories: " + totalCalories + ")");
         }
 
 

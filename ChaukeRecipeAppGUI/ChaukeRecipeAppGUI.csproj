@@ -97,5 +97,25 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back_Icon.png" />
+    <Resource Include="Images\Calculator_Icon.png" />
+    <Resource Include="Images\ClearRecipe_Icon.png" />
+    <Resource Include="Images\Color logo with background.ico" />
+    <Resource Include="Images\Color-logo-no-background.ico" />
+    <Resource Include="Images\CreateRecipe_Icon.png" />
+    <Resource Include="Images\Display_Icon.png" />
+    <Resource Include="Images\Exit_Icon.png" />
+    <Resource Include="Images\Home_Icon.png" />
+    <Resource Include="Images\Main_Menu_Icon.png" />
+    <Resource Include="Images\Menu_Icon.png" />
+    <Resource Include="Images\No_Icon.png" />
+    <Resource Include="Images\ResetQuantities_Icon.png" />
+    <Resource Include="Images\Sanele-Recipe-Journal-Logo-%28Color logo - no background%29.png" />
+    <Resource Include="Images\Save_Icon.png" />
+    <Resource Include="Images\ScaleQuantities_Icon.png" />
+    <Resource Include="Images\White-logo-no-background.ico" />
+    <Resource Include="Images\Yes_Icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

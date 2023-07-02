@@ -51,6 +51,140 @@
         <!--Header Grid [E]-->
 
 
+        <!--Menu grid [s]-->
+        <Grid x:Name="Menu" Visibility="Visible" Cursor='Hand' Width="200" HorizontalAlignment="Left" Background="Azure" >
+
+            <StackPanel>
+
+                <Grid Height="30" Background="WhiteSmoke"></Grid>
+
+            </StackPanel>
+
+        </Grid>
+        <!--Menu Grid [E]-->
+
+        <!-- Buttons Sections [S] -->
+
+        <!-- HOME Button [S] -->
+        <Button Cursor="Hand" x:Name="btn_home" Width="200" BorderBrush="Red" BorderThickness="2" Margin="0 70 20 0" Height="60" Background="AntiqueWhite" VerticalAlignment="Top" Click="btn_home_Click" >
+
+            <StackPanel Orientation="Horizontal">
+
+                <Image Source="Images/Home_Icon.png" VerticalAlignment="Center" Margin="10 0 0 0"/>
+
+                <TextBlock x:Name="Home" FontSize="14" FontFamily="Bell MT"  FontWeight="Bold" Margin="9 19 19 15" ><Run Text="Home"/></TextBlock>
+
+            </StackPanel>
+
+        </Button>
+        <!-- HOME Button [E] -->
+
+        <!--Create Recipe Buttton [S]-->
+        <Button Cursor="Hand" x:Name="btn_createRecipe" Background="AntiqueWhite" BorderBrush="Red" BorderThickness="2" Margin="0,150,0,0" Height="60" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Click="btn_createRecipe_Click"  >
+
+            <StackPanel Orientation="Horizontal">
+
+                <Image Source="Images/CreateRecipe_Icon.png"></Image>
+                <TextBlock x:Name="Create_Recipe" FontSize="14" FontFamily="Bell MT" FontWeight="Bold"  VerticalAlignment="Center"  TextWrapping="Wrap" >
+                
+                    Create 
+                    <LineBreak/>
+                    Recipe
+
+                </TextBlock>
+
+            </StackPanel>
+
+        </Button>
+        <!--Create Recipe Buttton [E]-->
+
+        <!--Display Button [S] -->
+        <Button Cursor="Hand" x:Name="btn_Display" BorderBrush="Red" BorderThickness="2" Background="AntiqueWhite" Width="200" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 230 20 0 " Click="btn_Display_Click" >
+
+            <StackPanel Orientation="Horizontal">
+
+                <Image Source="Images/Display_Icon.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="30 0 0 0"></Image>
+                <TextBlock x:Name="Diplay" FontSize="14" FontFamily="Bell MT"  FontWeight="Bold" Margin="9 19 14 15" ><Run Text="Diplay"/></TextBlock>
+
+
+            </StackPanel>
+
+        </Button>
+        <!--Display Button [E] -->
+
+        <!-- Scale Quantities Button [S] -->
+        <Button Cursor="Hand" x:Name="btn_scaleQuantities" BorderBrush="Red" BorderThickness="2" Background="AntiqueWhite" Width="200" Height="60" HorizontalAlignment="Left" Margin="0 310 20 0 " VerticalAlignment="Top" Click="btn_scaleQuantities_Click" >
+
+            <StackPanel Orientation="Horizontal">
+
+                <Image Source="Images/ScaleQuantities_Icon.png" VerticalAlignment="Center" Margin="40 0 10 0"></Image>
+
+                <TextBlock x:Name="Scale_Quantities" FontSize="14" FontFamily="Bell MT" FontWeight="Bold"  VerticalAlignment="Center"  TextWrapping="Wrap" >
+                
+                    Scale 
+                    <LineBreak/>
+                    Quantities
+
+                </TextBlock>
+
+
+            </StackPanel>
+
+
+        </Button>
+
+        <!--Scale Quantities Button [E]-->
+
+        <!-- Reset Button [S]-->
+        <Button Cursor="Hand" x:Name="btn_Reset" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="60" Background="AntiqueWhite" BorderBrush="Red" BorderThickness="2" Margin="0 390 20 0" Click="btn_Reset_Click" >
+
+
+            <StackPanel Orientation="Horizontal">
+
+                <Image Source="Images/ResetQuantities_Icon.png" Width="62" RenderTransformOrigin="-0.119,0.465" Margin="10 0 0 0" ></Image>
+
+                <TextBlock x:Name="Reset" FontSize="14" FontFamily="Bell MT"  FontWeight="Bold" Margin="9 19 14 15" ><Run Text="Reset"/></TextBlock>
+
+
+            </StackPanel>
+
+        </Button>
+        <!-- Reset Button [E]-->
+
+        <!--Clear Button [S]-->
+        <Button Cursor="Hand" x:Name="btn_clear" Width="200" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Background="AntiqueWhite" BorderBrush="Red" BorderThickness="2" Margin="0 470 20 0" Click="btn_clear_Click" >
+
+
+            <StackPanel Orientation="Horizontal">
+
+                <Image Source="Images/ClearRecipe_Icon.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 15 0 "></Image>
+
+                <TextBlock x:Name="Clear" FontSize="14" FontFamily="Bell MT"  FontWeight="Bold" Margin="0 20"   ><Run Text="Clear"/></TextBlock>
+
+
+            </StackPanel>
+
+
+        </Button>
+        <!--Clear Button [E]-->
+
+        <!--Exit [S]-->
+
+        <Button Cursor="Hand" x:Name="btn_exit" BorderBrush="Black" Background="Red" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Height="60" Width="200" Margin="0 550 20 0 " Click="btn_exit_Click">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Image Source="Images/Exit_Icon.png" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0 0 55 0" ></Image>
+
+            </StackPanel>
+
+        </Button>
+
+        <!--Exit [E]-->
+        
+        <!--Buttons Exit [E] -->
+
+
 
     </Grid>
 </Window>

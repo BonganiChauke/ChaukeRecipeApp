@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChaukeRecipeAppGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Sanele Recipe App" Icon="Images/Color-logo-no-background.ico" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True" MinHeight="810" Width="1498" Height="810" WindowStyle="ThreeDBorderWindow">
+   
+    <!--Main program grid-->
+    <Grid x:Name="MainGrid" MaxWidth="1280"  Background="NavajoWhite" Grid.Column="0" Margin="51,0,38,34">
         
     </Grid>
 </Window>

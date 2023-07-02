@@ -303,6 +303,33 @@
 
         <!--Ingredient details grid [E]-->
 
+        <!--numberOfSteps_Grid [S]-->
+        <Grid x:Name="numberOfSteps_Grid" Visibility="Hidden" Background="NavajoWhite" Grid.ColumnSpan="2" Margin="0,30,0,0">
+
+            <!---->
+            <StackPanel  Orientation="Horizontal" Background="BlanchedAlmond" Margin="465,79,349,267"/>
+            <Label x:Name="labelHeadingSteps" FontSize="25" Background="PaleGoldenrod" FontFamily="Goudy Stout" BorderBrush="MidnightBlue" BorderThickness="2" Content="Number Of Steps" Margin="465,79,349,0" VerticalAlignment="Top" Height="50"/>
+
+            <Label x:Name="labelNumberOfSteps" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="18" Content="Number Of Steps" HorizontalAlignment="Left" Margin="477,242,0,0" VerticalAlignment="Top" Height="40" Width="200"/>
+            <TextBox x:Name="txtBox_numberOfSteps" BorderBrush="Red" BorderThickness="2" HorizontalAlignment="Left" Margin="698,242,0,0" TextWrapping="Wrap" Text=""  VerticalAlignment="Top" Width="200" Height="40" RenderTransformOrigin="0.945,0.571"/>
+
+            <Button x:Name="btn_numberOfSteps" Width="200" Height="40" BorderBrush="Red" Background="AntiqueWhite"  BorderThickness="2" Margin="613,345,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btn_numberOfSteps_Click">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="Images/Save_Icon.png"></Image>
+
+                    <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Save</TextBlock>
+
+                </StackPanel>
+
+
+            </Button>
+            <StackPanel Height="30" Orientation="Horizontal" Background="DarkMagenta" Margin="465,0,349,267" VerticalAlignment="Bottom" />
+
+
+        </Grid>
+        <!--numberOfSteps_Grid [E]-->
 
 
     </Grid>

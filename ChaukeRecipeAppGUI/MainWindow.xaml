@@ -381,6 +381,37 @@
         </Grid>
         <!--recipeSave_Grid [E]-->
 
+        <!--Option display Grids [S]-->
+
+        <Grid x:Name="optionDisplay_Grids" Visibility="Hidden" Background="NavajoWhite" Margin="200,30,0,0" Grid.ColumnSpan="2" >
+            <Label x:Name="labelHeadingOption"  Content="Display Options" FontSize="25" Background="PaleGoldenrod" FontFamily="Goudy Stout" BorderBrush="MidnightBlue" BorderThickness="2" HorizontalAlignment="Center" Margin="0,52,0,0" VerticalAlignment="Top"/>
+
+            <Button x:Name="btn_selectRecipe" Background="AntiqueWhite" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Margin="0,130,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="btn_selectRecipe_Click">
+
+                <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Select Recipe</TextBlock>
+
+            </Button>
+
+            <Button x:Name="btn_searchRecipe" Background="AntiqueWhite" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Margin="0,190,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="btn_searchRecipe_Click">
+
+                <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Search Recipe</TextBlock>
+
+
+
+            </Button>
+
+            <Button x:Name="btn_viewAll" Background="AntiqueWhite" Width="200" BorderBrush="Red" BorderThickness="2" Margin="0,250,0,0" HorizontalAlignment="Center" Height="40" VerticalAlignment="Top" Click="btn_viewAll_Click">
+
+                <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold" Text="View All"/>
+
+
+            </Button>
+
+
+
+        </Grid>
+
+        <!--Option display Grids [E]-->
 
     </Grid>
 </Window>

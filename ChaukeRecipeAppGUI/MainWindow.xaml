@@ -331,6 +331,32 @@
         </Grid>
         <!--numberOfSteps_Grid [E]-->
 
+        <!-- stepsDescription_Grid [S]-->
+        <Grid x:Name="stepsDescription_Grid" Visibility="Hidden" Background="NavajoWhite" Margin="0,30,0,0" Grid.ColumnSpan="2">
+
+            <StackPanel Orientation="Horizontal" Background="Bisque" Margin="373,109,157,0" Height="422" VerticalAlignment="Top"/>
+
+            <Label x:Name="labelStepDescriptionHeading" FontSize="25" Background="PaleGoldenrod" FontFamily="Goudy Stout" BorderBrush="MidnightBlue" BorderThickness="2" Content="Step description" HorizontalAlignment="Left" Margin="508,150,0,0" Width="460" Height="48" VerticalAlignment="Top"/>
+
+
+            <Label x:Name="label1_StepNumberDescription" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" Height="70" Width="250" FontSize="18" Content="" HorizontalAlignment="Left" Margin="390,252,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtBox_stepsDescription" BorderBrush="Red" BorderThickness="2" Height="70" Width="370" HorizontalAlignment="Left" Margin="714,252,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+
+            <Button x:Name="btn_saveStepDescription" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Click="btn_saveStepDescription_Click" Margin="602,385,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="Images/Save_Icon.png"></Image>
+                    <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Save</TextBlock>
+
+
+                </StackPanel>
+
+            </Button>
+            <StackPanel Orientation="Horizontal" Background="Crimson" Height="20" Margin="373,511,157,0" VerticalAlignment="Top"></StackPanel>
+
+        </Grid>
+        <!-- stepsDescription_Grid [E]-->
 
     </Grid>
 </Window>

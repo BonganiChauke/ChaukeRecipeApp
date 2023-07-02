@@ -236,6 +236,73 @@
         </Grid>
         <!--Recipe Name and Ingredients Number Grid [E]-->
 
+        <!--Ingredient details grid [S]-->
+        <Grid x:Name="ingredientsDetails_Grid" Visibility="Hidden" Background="NavajoWhite" Margin="0,30,0,0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="103*"/>
+                <ColumnDefinition Width="1158*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal"  Background="GhostWhite" Grid.Column="1" Margin="26,54,98,51"/>
+
+
+            <Label x:Name="labelIngrdientDetailCount" FontFamily="Goudy Stout" Content="Ingredient Detail For: " Background="PaleGoldenrod" BorderBrush="Magenta" BorderThickness="2" FontSize="20" Margin="10,0,10,0" Height="54" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+
+            <Label x:Name="labelIngredientName" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="18" Content="Ingredient Name" HorizontalAlignment="Left" Margin="28,74,0,0" VerticalAlignment="Top" Height="40" Width="168" Grid.Column="1"/>
+            <TextBox x:Name="txtBox_ingredientName" BorderBrush="Red" BorderThickness="2" HorizontalAlignment="Left" Margin="267,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="40" Grid.Column="1"/>
+
+            <Label x:Name="labelQuantity" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="18" Content="Quantity" HorizontalAlignment="Left" Margin="28,139,0,0" VerticalAlignment="Top" Width="168" Height="40" Grid.Column="1"/>
+            <TextBox x:Name="txtBox_ingredientQuantity" BorderBrush="Red" BorderThickness="2" HorizontalAlignment="Left" Margin="267,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="40" Grid.Column="1"/>
+
+            <Label x:Name="labelIngredientUnitMeasurement" Content="Unit Measurement" HorizontalAlignment="Left" Margin="26,214,0,0" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="18"  VerticalAlignment="Top" Height="40" Width="170" Grid.Column="1"/>
+            <TextBox x:Name="txtBox_ingredientUnitMeasurement" BorderBrush="Red" BorderThickness="2" HorizontalAlignment="Left" Margin="267,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="40" Grid.Column="1"/>
+
+            <StackPanel Orientation="Horizontal" Background="Yellow"  Height="17" Margin="26,278,98,0" VerticalAlignment="Top" Grid.Column="1"/>
+
+            <!-- ***************** Food Group and Calories -->
+
+            <!-- Text block (2) to give the user an explanation of calories and food group -->
+
+            <!--Calories textblock-->
+            <TextBlock x:Name="textBlock_calories" Margin="26,320,589,0" TextWrapping="Wrap" Background="BlanchedAlmond" Height="70" VerticalAlignment="Top" Grid.Column="1"><Run Text="Calories"/><LineBreak/><Run Text="Are amounts of energy from food and drinks measured in kcals Calories put energy into our bodies to perform normal bodily functions and physical activity "/></TextBlock>
+
+            <!--Food Group-->
+            <TextBlock x:Name="textBlock_foodGroup" Background="BlanchedAlmond" Margin="615,320,98,0" TextWrapping="Wrap" Grid.Column="1" Height="86" VerticalAlignment="Top"><Run Text="Food Group"/><LineBreak/><Run Text="A food group is a collection of foods that share similar nutritional properties or biological classifications."/><LineBreak/><Run Text="List of nutrition guides typically divide foods into food groups and Recommended Dietary Allowance recommend daily servings of each group for a healthy diet"/></TextBlock>
+
+            <Label x:Name="labelCalories" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="18" Content="Calories" Margin="28,424,977,0" VerticalAlignment="Top" Height="35" Grid.Column="1"/>
+            <TextBox x:Name="txtBox_calories" BorderBrush="Red" BorderThickness="2" Grid.Column="1" HorizontalAlignment="Left" Margin="28,488,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="34"/>
+
+            <Label x:Name="labelFoodGroup" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="18" Grid.Column="1" Content="Select Food Group" HorizontalAlignment="Left" Margin="615,424,0,0" VerticalAlignment="Top" Height="35" Width="170"/>
+            <ComboBox x:Name="comboBox_foodGroup" SelectedIndex="0"  FontSize="10.5" FontFamily="Century Gothic"  Grid.Column="1" HorizontalAlignment="Left" Margin="615,488,0,0" VerticalAlignment="Top" Width="286" Height="34">
+
+                <ComboBoxItem>Starchy Food</ComboBoxItem>
+                <ComboBoxItem>Fruits and Vegatables</ComboBoxItem>
+                <ComboBoxItem>Dry Beans, Peas, Lentils, and Soya</ComboBoxItem>
+                <ComboBoxItem>Chicken, Fish, Meat, and Eggs</ComboBoxItem>
+                <ComboBoxItem>Milk and Dairy Products</ComboBoxItem>
+                <ComboBoxItem>Fats and Oil</ComboBoxItem>
+                <ComboBoxItem>Water</ComboBoxItem>
+
+            </ComboBox>
+            <StackPanel Orientation="Horizontal" Background="Chocolate" Margin="26,0,98,51" Grid.Column="1" Height="20" VerticalAlignment="Bottom"/>
+            <Button x:Name="btn_saveIngredients" Grid.Column="1" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Background="AntiqueWhite" HorizontalAlignment="Left" Margin="451,562,0,0" VerticalAlignment="Top" Click="btn_saveIngredients_Click_1">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="Images/Save_Icon.png"></Image>
+                    <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Save</TextBlock>
+
+                </StackPanel>
+
+
+            </Button>
+
+
+
+        </Grid>
+
+        <!--Ingredient details grid [E]-->
+
 
 
     </Grid>

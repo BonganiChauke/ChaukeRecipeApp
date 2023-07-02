@@ -358,5 +358,29 @@
         </Grid>
         <!-- stepsDescription_Grid [E]-->
 
+        <!--recipeSave_Grid [S]-->
+        <Grid x:Name="recipeSaved_Grid" Visibility="Hidden" Background="NavajoWhite" Grid.ColumnSpan="2" Margin="205,30,0,0">
+            <Label x:Name="labelRecipeSavedHeading" FontSize="25" Background="PaleGoldenrod" FontFamily="Goudy Stout" BorderBrush="MidnightBlue" BorderThickness="2" Content="Recipe Saved Succeful" HorizontalAlignment="Center" Margin="0,89,0,0" VerticalAlignment="Top"/>
+
+            <Label x:Name="labelRecipeNameSave" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="30" Content="" HorizontalAlignment="Center" Margin="0,176,0,0" VerticalAlignment="Top" Width="388" Height="50"/>
+
+            <Button Visibility="Hidden" x:Name="btn_HomeFromRecipeSave" BorderBrush="Yellow" BorderThickness="2" Background="AntiqueWhite" Width="200" Height="40" Margin="0,267,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="btn_HomeFromRecipeSave_Click">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="Images/Home_Icon.png"></Image>
+
+                    <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Home</TextBlock>
+
+
+                </StackPanel>
+
+            </Button>
+
+
+        </Grid>
+        <!--recipeSave_Grid [E]-->
+
+
     </Grid>
 </Window>

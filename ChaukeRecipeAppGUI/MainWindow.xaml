@@ -182,7 +182,15 @@
 
         <!--Exit [E]-->
         
-        <!--Buttons Exit [E] -->
+        <!--Buttons Section [E] -->
+
+        <!--Home Grid [S]-->
+        <Grid x:Name="HomeGrid" Visibility="Hidden" Background="NavajoWhite" Grid.ColumnSpan="2" Margin="200,30,0,0">
+
+            <Image Source="Images/Sanele-Recipe-Journal-Logo-(Color logo - no background).png" Margin="479,82,19,82"/>
+
+        </Grid>
+        <!--Home Grid [S]-->
 
 
 

@@ -3,12 +3,54 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ChaukeRecipeAppGUI"
+        xmlns:local="clr-namespace:ChaukeRecipeAppGUI" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Sanele Recipe App" Icon="Images/Color-logo-no-background.ico" WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True" MinHeight="810" Width="1498" Height="810" WindowStyle="ThreeDBorderWindow">
    
     <!--Main program grid-->
     <Grid x:Name="MainGrid" MaxWidth="1280"  Background="NavajoWhite" Grid.Column="0" Margin="51,0,38,34">
-        
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+
+
+        </Grid.ColumnDefinitions>
+
+
+        <!--Header Grid [S]-->
+        <Grid Height="30" Width="auto" VerticalAlignment="Top" Background="WhiteSmoke" Grid.ColumnSpan="2">
+
+            <TextBlock x:Name="Heading" Text="SANELE RECIPE JOURNAL" HorizontalAlignment="Left"  FontSize="25" FontFamily="Arial Rounded MT Bold" FontStyle="Oblique" Foreground="Brown" Margin="528,0,0,0"></TextBlock>
+
+            <Button Cursor="Hand" x:Name="btn_sideMenu" Width="25" BorderBrush="WhiteSmoke" Background="WhiteSmoke" HorizontalAlignment="Left" Margin="1255,0,0,0">
+
+                <StackPanel Orientation="Vertical">
+                    <materialDesign:PopupBox Background="AntiqueWhite" RenderTransformOrigin="-0.335,0.448" Width="24" >
+
+                        <StackPanel Width="100" Background="White" Orientation="Vertical">
+
+                            <Button x:Name="btn_PopUpBox_Help" Content="Help" Grid.Column="0"/>
+                            <Separator/>
+                            <Button x:Name="btn_PopUpBox_Exit" Content="Exit"/>
+
+
+                        </StackPanel>
+
+                    </materialDesign:PopupBox>
+
+                </StackPanel>
+
+
+
+            </Button>
+
+
+        </Grid>
+        <!--Header Grid [E]-->
+
+
+
     </Grid>
 </Window>

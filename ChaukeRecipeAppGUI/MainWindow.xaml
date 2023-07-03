@@ -454,7 +454,30 @@
         </Grid>
 
         <!--Select recipe Grid [E]-->
-        
-        
+
+        <!--Search for recipe grid [S] -->
+        <Grid x:Name="serachForRecipe_Grid" Visibility="Hidden" Background="NavajoWhite" Margin="200,30,0,0" Grid.ColumnSpan="2">
+            <Label x:Name="labelHeadingSearchRecipe" FontSize="25" Background="PaleGoldenrod" FontFamily="Goudy Stout" BorderBrush="MidnightBlue" BorderThickness="2" Content="Search For Recipe" HorizontalAlignment="Left" Margin="277,33,0,0" VerticalAlignment="Top"/>
+
+            <Label x:Name="labelSearchFilter" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="18" Content="Search by Ingredient Name or Food Group" HorizontalAlignment="Left" Margin="277,158,0,0" VerticalAlignment="Top" Width="359"/>
+            <TextBox x:Name="txtBox_searchRecipe" BorderBrush="Red" BorderThickness="2" Height="40" Width="359" HorizontalAlignment="Left" Margin="277,216,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+
+            <Button x:Name="btn_backFromSearchGrid" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Background="AntiqueWhite" Margin="680,216,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btn_backFromSearchGrid_Click">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="Images/Back_Icon.png"></Image>
+                    <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Back</TextBlock>
+
+
+                </StackPanel>
+
+            </Button>
+
+
+        </Grid>
+        <!-- Search for recipe grid [E]-->
+
+
     </Grid>
 </Window>

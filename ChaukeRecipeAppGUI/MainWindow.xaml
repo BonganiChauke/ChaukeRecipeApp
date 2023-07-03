@@ -478,6 +478,24 @@
         </Grid>
         <!-- Search for recipe grid [E]-->
 
+        <!--view all recipe grid-->
+        <Grid x:Name="viewAllRecipe_Grid" Visibility="Hidden" Background="NavajoWhite" Margin="200,30,0,0" Grid.ColumnSpan="2">
+            <Label x:Name="labelheadingAllRecipes" Content="All Saved recipes" FontSize="25" Background="PaleGoldenrod" FontFamily="Goudy Stout" BorderBrush="MidnightBlue" BorderThickness="2" HorizontalAlignment="Left" Margin="258,10,0,0" VerticalAlignment="Top"/>
+            <ListBox x:Name="listBox_allRecipes" Visibility="Hidden" FontSize="20" FontFamily="Franklin Gothic Book" Background="Azure" BorderBrush="MidnightBlue" BorderThickness="2" Margin="189,96,281,223"/>
+
+            <Button x:Name="btn_backFromViewAllRecipes" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Background="AntiqueWhite" Margin="367,582,0,0" Click="btn_backFromViewAllRecipes_Click" VerticalAlignment="Top" HorizontalAlignment="Left" >
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="Images/Back_Icon.png"></Image>
+                    <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Back</TextBlock>
+
+                </StackPanel>
+
+            </Button>
+
+        </Grid>
+        <!--view all recipe grid-->
 
     </Grid>
 </Window>

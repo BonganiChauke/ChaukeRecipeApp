@@ -413,5 +413,48 @@
 
         <!--Option display Grids [E]-->
 
+        <!-- Select recipe Grid [S]-->
+
+        <Grid x:Name="selectReccipe_Grid" Visibility="Hidden" Background="NavajoWhite" Grid.ColumnSpan="2" Margin="200,30,0,0">
+            <Label x:Name="labelSelectRecipeHeading" Content="Select a recipe" FontSize="25" Background="PaleGoldenrod" FontFamily="Goudy Stout" BorderBrush="MidnightBlue" BorderThickness="2" HorizontalAlignment="Left" Margin="285,10,0,0" Height="48" VerticalAlignment="Top"/>
+
+
+
+            <ComboBox x:Name="comboBox_recipeNames" HorizontalAlignment="Left" Margin="285,132,0,0" VerticalAlignment="Top" Width="413" Height="50"/>
+            <Label x:Name="labelRecipesNames" Content="Select A Recipe" FontFamily="Franklin Gothic Book" BorderThickness="2" BorderBrush="MidnightBlue" Background="PaleGoldenrod" FontSize="18" HorizontalAlignment="Left" Margin="285,87,0,0" VerticalAlignment="Top" Height="40"/>
+
+            <ListBox Visibility="Hidden" Background="AntiqueWhite" x:Name="listBox_selectedRecipe" FontSize="20" FontFamily="Franklin Gothic Book" Margin="214,302,132,44" SelectionChanged="listBox_selectedRecipe_SelectionChanged"/>
+
+            <Button x:Name="btn_DisplaySelectedRecipe" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Background="AntiqueWhite" Margin="285,219,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Click="btn_DisplaySelectedRecipe_Click">
+
+                <TextBlock FontSize="14" FontFamily="Bell MT" FontWeight="Bold" Height="18">Diplay</TextBlock>
+
+
+            </Button>
+
+            <Button x:Name="btn_clearList" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Background="AntiqueWhite" Margin="498,219,0,0" Click="btn_clearList_Click" VerticalAlignment="Top" HorizontalAlignment="Left" >
+
+                <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Clear List</TextBlock>
+
+
+            </Button>
+
+            <Button x:Name="btn_backFromSelectedRecipe" Width="200" BorderBrush="Red" BorderThickness="2" Height="40" Background="AntiqueWhite" Click="btn_backFromSelectedRecipe_Click" Margin="498,87,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <Image Source="Images/Back_Icon.png"></Image>
+
+                    <TextBlock Margin="10" FontSize="14" FontFamily="Bell MT" FontWeight="Bold">Back</TextBlock>
+
+                </StackPanel>
+
+            </Button>
+
+        </Grid>
+
+        <!--Select recipe Grid [E]-->
+        
+        
     </Grid>
 </Window>
